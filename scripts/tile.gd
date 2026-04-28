@@ -83,10 +83,12 @@ func _on_hit() -> void:
 
 func _death() -> void:
 	for n in neighbours:
+		if !n: continue
 		n.neighbour_die(self)
 	queue_free()
 	
 	for n in neighbours:
+		if !n: continue
 		n.recheck_root()
 
 func _on_mouse_entered() -> void:

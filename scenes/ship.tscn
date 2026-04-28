@@ -8,10 +8,12 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_tfsc7"]
 allow_unpress = true
 
-[node name="Ship" type="CharacterBody2D" unique_id=65887 node_paths=PackedStringArray("preview_container")]
+[node name="Ship" type="CharacterBody2D" unique_id=65887 node_paths=PackedStringArray("root", "preview_container", "canvas")]
 scale = Vector2(2, 2)
 script = ExtResource("1_2gnfn")
+root = NodePath("Root")
 preview_container = NodePath("PreviewContainer")
+canvas = NodePath("CanvasLayer")
 
 [node name="PreviewContainer" type="Node2D" parent="." unique_id=1133813455]
 

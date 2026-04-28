@@ -4,7 +4,9 @@ class_name Ship
 signal shop_select(new_data: MyTileData)
 
 @export var speed: float = 1e4
+@export var root: Tile = null
 @export var preview_container: Node2D = null
+@export var canvas: CanvasLayer = null
 
 var current: MyTileData = Constants.TILE_DATA.block
 var preview: Tile = null
@@ -27,6 +29,11 @@ func _process(_delta: float) -> void:
 	if build_mode and Input.is_action_just_pressed("build") and preview.check_prebuild():
 		preview.build()
 		_recreate_preview()
+	
+	if !root:
+		var game_over = preload("uid://dn5c64myggs71").instantiate()
+		canvas.add_child(game_over)
+		get_tree().paused = true
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")

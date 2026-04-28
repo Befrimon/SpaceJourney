@@ -15,7 +15,6 @@ func assert_world(new_world: Node2D) -> void:
 func assert_canvas(new_canvas: CanvasLayer) -> void:
 	canvas_container = new_canvas
 
-
 func change_scene(scene: String) -> void:
 	var packed: PackedScene = load(scene)
 	
