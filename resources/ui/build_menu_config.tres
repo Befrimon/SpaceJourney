@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BuildMenuConfig" format=3 uid="uid://yv35kl0nd7p4"]
+
+[ext_resource type="Script" uid="uid://ufqay1ij778u" path="res://scripts/ui/build_menu_config.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+block_ids = Array[StringName]([&"debug_block_1", &"debug_block_2"])

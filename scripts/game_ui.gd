@@ -21,11 +21,11 @@ func _process(_delta: float) -> void:
 	money_label.text = "%d" % Global.money
 	
 	if Global.wave_active:
-		wave_title.text = "Enemies: "
+		wave_title.text = TranslationServer.translate("ENEMY_LEFT")
 		wave_label.text = "%d" % Global.enemy_count
 		wave_value.text = ""
 	else:
-		wave_title.text = "Next Wave: "
+		wave_title.text = TranslationServer.translate("NEXT_WAVE")
 		wave_label.text = "%d" % int(Global.wave_timer.time_left)
 		wave_value.text = "s"
 	

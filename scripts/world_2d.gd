@@ -8,8 +8,6 @@ func _ready() -> void:
 	Global.next_wave()
 	wave_timer.start(Global.wave_delay)
 	Global.wave_timer = wave_timer
-	
-	
 
 func _process(_delta: float) -> void:
 	if Global.wave_active:

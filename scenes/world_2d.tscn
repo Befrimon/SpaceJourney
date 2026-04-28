@@ -73,5 +73,6 @@ one_shot = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1252175874]
 stream = SubResource("AudioStreamRandomizer_rurfk")
 autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="WaveTimer" to="." method="_spawn_enemies"]

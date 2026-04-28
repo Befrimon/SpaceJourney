@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="UIButtonSettings" format=3 uid="uid://b8nxmoh84kac"]
+
+[ext_resource type="AudioStream" uid="uid://wcgr2vdlstcg" path="res://assets/sound/ui/Audio/back_001.ogg" id="1_n6vrp"]
+[ext_resource type="AudioStream" uid="uid://bprpnaiselo5l" path="res://assets/sound/ui/Audio/back_002.ogg" id="2_cotki"]
+[ext_resource type="AudioStream" uid="uid://6yfygrjgmqu6" path="res://assets/sound/ui/Audio/back_003.ogg" id="3_lofyv"]
+[ext_resource type="AudioStream" uid="uid://cvspq5xiy75p5" path="res://assets/sound/ui/Audio/back_004.ogg" id="4_tgcya"]
+[ext_resource type="AudioStream" uid="uid://c3xq5rjc7mhq0" path="res://assets/sound/ui/Audio/bong_001.ogg" id="5_scxgx"]
+[ext_resource type="Script" uid="uid://okfall1awfb5" path="res://scripts/ui/ui_button_settings.gd" id="6_swibt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ekit"]
+random_pitch = 1.0293022
+streams_count = 4
+stream_0/stream = ExtResource("1_n6vrp")
+stream_1/stream = ExtResource("2_cotki")
+stream_2/stream = ExtResource("3_lofyv")
+stream_3/stream = ExtResource("4_tgcya")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n4uci"]
+random_pitch = 1.0293022
+streams_count = 1
+stream_0/stream = ExtResource("5_scxgx")
+
+[resource]
+script = ExtResource("6_swibt")
+hover_stream = SubResource("AudioStreamRandomizer_n4uci")
+click_stream = SubResource("AudioStreamRandomizer_8ekit")
+metadata/_custom_type_script = "uid://okfall1awfb5"

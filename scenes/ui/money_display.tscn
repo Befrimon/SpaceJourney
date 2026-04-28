@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c8dw8j5x3v1m"]
+
+[ext_resource type="Script" path="res://scripts/ui/money_display.gd" id="1_script"]
+
+[node name="MoneyDisplay" type="Label"]
+text = "COGS: 0"
+script = ExtResource("1_script")
+

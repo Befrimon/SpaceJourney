@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://l1lcblaw643f"]
+
+[ext_resource type="Texture2D" uid="uid://bciuj5hbo82so" path="res://assets/sprite/RU.png" id="1_1g8jr"]
+[ext_resource type="Script" uid="uid://bmayh0njwouer" path="res://scripts/ui/main_menu.gd" id="1_btxxm"]
+[ext_resource type="Texture2D" uid="uid://egeld37ilpra" path="res://assets/sprite/RU_HOVERED.png" id="2_m1kxf"]
+[ext_resource type="Resource" uid="uid://b8nxmoh84kac" path="res://resources/ui/default_ui_sounds.tres" id="3_wb0q5"]
+[ext_resource type="Texture2D" uid="uid://c4ra17p3ew7v7" path="res://assets/sprite/US.png" id="3_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://dko5kjtjrqtwi" path="res://assets/sprite/US_HOV.png" id="4_m1kxf"]
+[ext_resource type="Script" uid="uid://bwjq3svgnfeun" path="res://scripts/ui/ui_texture_button.gd" id="7_q85j6"]
+[ext_resource type="Script" uid="uid://dti3vmjmu654" path="res://scripts/ui/ui_button.gd" id="7_y1h5l"]
+[ext_resource type="Texture2D" uid="uid://dokso3ch0hjpp" path="res://assets/space_background_pack/space_background_pack/Assets/Blue Version/blue-preview.png" id="9_q85j6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85j6"]
+bg_color = Color(0.2509804, 0.2509804, 0.2509804, 0.5882353)
+
+[node name="MainMenu" type="Control" unique_id=1754400263]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btxxm")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=744885461]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -80.0
+offset_right = 88.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_q85j6")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1240938122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="Panel" type="Panel" parent="." unique_id=700049836]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q85j6")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1806895972]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="MenuColumn" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1911263030]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="StartBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=502151497]
+layout_mode = 2
+text = "START"
+script = ExtResource("7_y1h5l")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
+
+[node name="SettingsBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=504738217]
+layout_mode = 2
+text = "SETTINGS"
+script = ExtResource("7_y1h5l")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
+
+[node name="ExitBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=635861193]
+layout_mode = 2
+text = "EXIT"
+script = ExtResource("7_y1h5l")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
+
+[node name="LanguageRow" type="HBoxContainer" parent="Panel/MarginContainer/MenuColumn" unique_id=842619594]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RussianBtn" type="TextureButton" parent="Panel/MarginContainer/MenuColumn/LanguageRow" unique_id=942620969]
+layout_mode = 2
+texture_normal = ExtResource("1_1g8jr")
+texture_hover = ExtResource("2_m1kxf")
+script = ExtResource("7_q85j6")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://bwjq3svgnfeun"
+
+[node name="AmericanBtn" type="TextureButton" parent="Panel/MarginContainer/MenuColumn/LanguageRow" unique_id=87602415]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_x2yvf")
+texture_hover = ExtResource("4_m1kxf")
+script = ExtResource("7_q85j6")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://bwjq3svgnfeun"
+
+[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/StartBtn" to="." method="start_game"]
+[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/SettingsBtn" to="." method="settings"]
+[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/ExitBtn" to="." method="exit_game"]
+[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/LanguageRow/RussianBtn" to="." method="_on_russian_btn_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/LanguageRow/AmericanBtn" to="." method="_on_american_btn_pressed"]

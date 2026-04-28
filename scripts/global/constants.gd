@@ -1,7 +1,8 @@
 extends Node
 
 const SCENES: Dictionary[StringName, String] = {
-	"main_menu": "",
+	"main_menu": "uid://l1lcblaw643f",
+	"settings": "uid://de7jrpxcmw233",
 	"main_game": "uid://xprumt385jx",
 }
 

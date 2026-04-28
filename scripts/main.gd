@@ -10,7 +10,7 @@ func _ready() -> void:
 	SceneManager.assert_world(world)
 	SceneManager.assert_canvas(canvas)
 	
-	SceneManager.change_scene(Constants.SCENES.main_game)
+	SceneManager.change_scene(Constants.SCENES.main_menu)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("close"):

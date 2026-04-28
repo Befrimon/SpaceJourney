@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bl1rw531mg7u2"]
+
+[ext_resource type="Theme" uid="uid://ggx77dsgcq80" path="res://resources/ui/default_button_theme.tres" id="1_8tsh6"]
+[ext_resource type="Script" uid="uid://j4dmvmiuyb6y" path="res://scripts/ui/audio_settings.gd" id="1_ki30a"]
+
+[node name="AudioSettings" type="PanelContainer" unique_id=635372165]
+script = ExtResource("1_ki30a")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=569427413]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1211820311]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1213022200]
+layout_mode = 2
+theme = ExtResource("1_8tsh6")
+theme_type_variation = &"HeaderLarge"
+text = "MASTER_SOUND"
+
+[node name="MastSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=591289756]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer" unique_id=957910625]
+layout_mode = 2
+theme = ExtResource("1_8tsh6")
+text = "MUSIC_SOUND"
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=717570363]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="SFX" type="Label" parent="MarginContainer/VBoxContainer" unique_id=213788484]
+layout_mode = 2
+theme = ExtResource("1_8tsh6")
+text = "SFX_SOUND"
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer" unique_id=740670393]
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 0.5

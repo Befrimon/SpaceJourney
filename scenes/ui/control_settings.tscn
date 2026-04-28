@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c2oo687i7jom6"]
+
+[ext_resource type="Script" uid="uid://xckvx3b8rfjj" path="res://scripts/ui/control_settings.gd" id="1_8hiyb"]
+[ext_resource type="Resource" uid="uid://b8nxmoh84kac" path="res://resources/ui/default_ui_sounds.tres" id="2_2yxy3"]
+[ext_resource type="Theme" uid="uid://ggx77dsgcq80" path="res://resources/ui/default_button_theme.tres" id="2_h0wty"]
+
+[node name="ControlSettings" type="PanelContainer" unique_id=1422637458 node_paths=PackedStringArray("list")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8hiyb")
+button_settings = ExtResource("2_2yxy3")
+list = NodePath("ScrollContainer/ControlContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1317051702]
+layout_mode = 2
+
+[node name="ControlContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=746311076]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme = ExtResource("2_h0wty")

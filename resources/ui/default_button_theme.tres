@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://ggx77dsgcq80"]
+
+[ext_resource type="FontFile" uid="uid://dmmhblff8gnq8" path="res://assets/font/Pixuf.ttf" id="1_nca50"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nca50"]
+bg_color = Color(0.29467407, 0.29467413, 0.29467395, 1)
+
+[resource]
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_nca50")
+Button/styles/normal = SubResource("StyleBoxFlat_nca50")
+Label/colors/font_outline_color = Color(0.31764707, 0.25490198, 0.29803923, 1)
+Label/colors/font_shadow_color = Color(0.24477637, 0.24477643, 0.24477634, 0.7411765)
+Label/constants/outline_size = 1
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_nca50")

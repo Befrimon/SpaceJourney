@@ -147,7 +147,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=1482467261]
 layout_mode = 2
-text = "Money: "
+text = "MONEY"
 
 [node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=248865405]
 layout_mode = 2
