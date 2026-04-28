@@ -5,12 +5,21 @@ extends Node2D
 @export var timer: Timer = null
 
 var bullet: PackedScene = preload("uid://6iumdjknhmpy")
+var enabled: bool = true
 
 func _ready() -> void:
 	timer.wait_time = data.delay
 
-func _process(delta: float) -> void:
-	look_at(get_global_mouse_position())
+func _process(_delta: float) -> void:
+	if is_player:
+		look_at(get_global_mouse_position())
+	else:
+		look_at(Global.player_position)
+
+func pause_shoot() -> void:
+	enabled = false
+func resume_shoot() -> void:
+	enabled = true
 
 func _shoot() -> void:
 	var instance: Bullet = bullet.instantiate()
@@ -24,4 +33,5 @@ func _shoot() -> void:
 	else:
 		instance.parent = Bullet.Owners.ENEMY
 	
-	add_child(instance)
+	if enabled:
+		add_child(instance)

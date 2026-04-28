@@ -8,9 +8,12 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_tfsc7"]
 allow_unpress = true
 
-[node name="Ship" type="CharacterBody2D" unique_id=65887]
+[node name="Ship" type="CharacterBody2D" unique_id=65887 node_paths=PackedStringArray("preview_container")]
 scale = Vector2(2, 2)
 script = ExtResource("1_2gnfn")
+preview_container = NodePath("PreviewContainer")
+
+[node name="PreviewContainer" type="Node2D" parent="." unique_id=1133813455]
 
 [node name="Root" parent="." unique_id=1511329894 instance=ExtResource("2_4tobq")]
 is_root = true

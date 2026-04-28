@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ctebowhhru6yr" path="res://assets/s4m_ur4i_huge-assetpack(3)/s4m_ur4i_huge-assetpack-animals.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://dupy7nowutlkq" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://b67pb5cwowwcb" path="res://scenes/cannon.tscn" id="3_4ra3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
 radius = 6.0
@@ -42,6 +43,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
+radius = 160.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=753393108]
 collision_layer = 2
 collision_mask = 2
@@ -55,4 +59,14 @@ sprite_frames = SubResource("SpriteFrames_xwavj")
 autoplay = "default"
 frame_progress = 0.4581044
 
+[node name="Cannon" parent="." unique_id=881392516 instance=ExtResource("3_4ra3w")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1569746492]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=34079445]
+shape = SubResource("CircleShape2D_4ra3w")
+debug_color = Color(0.9990899, 0, 0.13691387, 0.41960785)
+
 [connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

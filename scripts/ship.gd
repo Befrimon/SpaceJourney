@@ -4,6 +4,7 @@ class_name Ship
 signal shop_select(new_data: MyTileData)
 
 @export var speed: float = 1e4
+@export var preview_container: Node2D = null
 
 var current: MyTileData = Constants.TILE_DATA.block
 var preview: Tile = null
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2(x_dir, y_dir) * speed * delta
 
 	move_and_slide()
+	Global.player_position = global_position
 
 
 func _on_shop_select(new_data: MyTileData) -> void:
@@ -46,5 +48,5 @@ func _on_shop_select(new_data: MyTileData) -> void:
 func _recreate_preview() -> void:
 	preview = preload("uid://y4jq8vyyx4h2").instantiate()
 	preview.data = current
-	add_child(preview)
+	preview_container.add_child(preview)
 	
