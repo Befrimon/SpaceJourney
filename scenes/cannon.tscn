@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b67pb5cwowwcb"]
 
 [ext_resource type="Texture2D" uid="uid://bqsc1abiebd4f" path="res://assets/s4m_ur4i_huge-assetpack(3)/s4m_ur4i_huge-assetpack-tilemap.png" id="1_xuqfy"]
+[ext_resource type="Script" uid="uid://cd80n42cej6nq" path="res://scripts/cannon.gd" id="2_pxhkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxhkx"]
 atlas = ExtResource("1_xuqfy")
@@ -8,6 +9,9 @@ region = Rect2(96, 120, 8, 8)
 
 [node name="Cannon" type="Sprite2D" unique_id=1158439815]
 texture = SubResource("AtlasTexture_pxhkx")
+script = ExtResource("2_pxhkx")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1237345804]
 target_position = Vector2(0, -4)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1956108316]
