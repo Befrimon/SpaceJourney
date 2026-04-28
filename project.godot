@@ -79,6 +79,11 @@ close={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="PlayerTiles"
+2d_physics/layer_2="Enemies"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

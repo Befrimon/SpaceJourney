@@ -9,3 +9,7 @@ const TILE_DATA: Dictionary[StringName, MyTileData] = {
 	"root": preload("uid://byi8oguqngvbh"),
 	"block": preload("uid://c58nsa68doo2u"),
 }
+
+const CANNONS: Dictionary[StringName, CannonData] = {
+	"default": preload("uid://dbapvwg7qkpo6"),
+}

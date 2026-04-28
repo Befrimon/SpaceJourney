@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch5h6nblis4pi" path="res://scripts/tile.gd" id="1_3dk36"]
 [ext_resource type="Texture2D" uid="uid://dwtfj4pokbxc" path="res://assets/Style E/tilemap_packed.png" id="2_ywnoi"]
+[ext_resource type="PackedScene" uid="uid://b67pb5cwowwcb" path="res://scenes/cannon.tscn" id="3_jy7pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy7pm"]
 atlas = ExtResource("2_ywnoi")
@@ -50,6 +51,9 @@ shape = SubResource("CircleShape2D_ywnoi")
 
 [node name="CollisionShape_01" type="CollisionShape2D" parent="Deny" unique_id=1982689038]
 shape = SubResource("CircleShape2D_ywnoi")
+
+[node name="Cannon" parent="." unique_id=881392516 instance=ExtResource("3_jy7pm")]
+is_player = true
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

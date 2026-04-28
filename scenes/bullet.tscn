@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://6iumdjknhmpy"]
+
+[ext_resource type="Texture2D" uid="uid://bqsc1abiebd4f" path="res://assets/s4m_ur4i_huge-assetpack(3)/s4m_ur4i_huge-assetpack-tilemap.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://dr0ttppxg84hy" path="res://scripts/bullet.gd" id="1_y25gk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
+atlas = ExtResource("1_mkf8s")
+region = Rect2(48, 192, 8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkf8s"]
+radius = 4.0
+
+[node name="Bullet" type="CharacterBody2D" unique_id=1343505469 node_paths=PackedStringArray("timer")]
+top_level = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_y25gk")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647565034]
+texture = SubResource("AtlasTexture_y25gk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1357258566]
+shape = SubResource("CircleShape2D_mkf8s")
+
+[node name="Timer" type="Timer" parent="." unique_id=2064349275]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_death"]
