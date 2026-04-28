@@ -5,11 +5,30 @@
 [ext_resource type="Texture2D" uid="uid://bd48fnljvtocq" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-backgound.png" id="2_ieres"]
 [ext_resource type="Texture2D" uid="uid://btta404c7q21e" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-stars.png" id="3_6cuhj"]
 [ext_resource type="Texture2D" uid="uid://byp6krc41c6rp" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-big-planet.png" id="4_vydw8"]
+[ext_resource type="AudioStream" uid="uid://du1v05kkkvfbn" path="res://assets/sounds/A Worthy Challenge (LOOP)-1.wav" id="6_rxbej"]
+[ext_resource type="AudioStream" uid="uid://bhul8gtemhbym" path="res://assets/sounds/A Worthy Challenge (LOOP).wav" id="7_p8ltl"]
+[ext_resource type="AudioStream" uid="uid://b82lg8l1tf1qe" path="res://assets/sounds/Hurry! (LOOP).wav" id="8_aua73"]
+[ext_resource type="AudioStream" uid="uid://da2v2vpt6n7uq" path="res://assets/sounds/In Dire Need (LOOP).wav" id="9_dojpf"]
+[ext_resource type="AudioStream" uid="uid://3n5lfx52ypfs" path="res://assets/sounds/Jump and Shoot Man (LOOP).wav" id="10_j30hf"]
+[ext_resource type="AudioStream" uid="uid://c2dab8334n4va" path="res://assets/sounds/Meeting The Call (INTRO).wav" id="11_o6f6o"]
+[ext_resource type="AudioStream" uid="uid://c4nuevwt5mljd" path="res://assets/sounds/Meeting The Call (LOOP).wav" id="12_5shll"]
 
-[node name="World2D" type="Node2D" unique_id=399623472 node_paths=PackedStringArray("enemy_container", "wave_timer")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rurfk"]
+playback_mode = 1
+streams_count = 7
+stream_0/stream = ExtResource("6_rxbej")
+stream_1/stream = ExtResource("7_p8ltl")
+stream_2/stream = ExtResource("8_aua73")
+stream_3/stream = ExtResource("9_dojpf")
+stream_4/stream = ExtResource("10_j30hf")
+stream_5/stream = ExtResource("11_o6f6o")
+stream_6/stream = ExtResource("12_5shll")
+
+[node name="World2D" type="Node2D" unique_id=399623472 node_paths=PackedStringArray("enemy_container", "wave_timer", "bg_player")]
 script = ExtResource("1_vydw8")
 enemy_container = NodePath("EnemyContainer")
 wave_timer = NodePath("WaveTimer")
+bg_player = NodePath("AudioStreamPlayer")
 
 [node name="Ship" parent="." unique_id=65887 instance=ExtResource("1_pneyj")]
 position = Vector2(163, 91)
@@ -50,5 +69,9 @@ centered = false
 
 [node name="WaveTimer" type="Timer" parent="." unique_id=814170892]
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1252175874]
+stream = SubResource("AudioStreamRandomizer_rurfk")
+autoplay = true
 
 [connection signal="timeout" from="WaveTimer" to="." method="_spawn_enemies"]

@@ -2,11 +2,14 @@ extends Node2D
 
 @export var enemy_container: Node2D = null
 @export var wave_timer: Timer = null
+@export var bg_player: AudioStreamPlayer = null
 
 func _ready() -> void:
 	Global.next_wave()
 	wave_timer.start(Global.wave_delay)
 	Global.wave_timer = wave_timer
+	
+	
 
 func _process(_delta: float) -> void:
 	if Global.wave_active:

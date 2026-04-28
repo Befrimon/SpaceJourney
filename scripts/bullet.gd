@@ -8,6 +8,7 @@ enum Owners {
 }
 
 @export var timer: Timer = null
+@export var sprite: Sprite2D = null
 
 var speed: float = 1e4
 var life_time: float = 1.0
@@ -22,6 +23,7 @@ func _ready() -> void:
 	match (parent):
 		Owners.PLAYER:
 			collision_mask = 2
+			sprite.modulate = Color(0.0, 1.0, 1.0, 1.0)
 		Owners.ENEMY:
 			collision_mask = 1
 

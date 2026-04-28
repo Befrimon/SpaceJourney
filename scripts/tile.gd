@@ -30,17 +30,18 @@ func _process(_delta: float) -> void:
 		sprite.modulate = Color(0, 1, 0)
 	
 	if placed and mouse_focus and Input.is_action_just_pressed("remove"):
-		_death()
+		Global.death_queue.append(self)
 	
 
-func check_root(from: Tile = null) -> bool:
+func check_root(visited: Array[Tile] = []) -> bool:
 	if is_root:
 		return true
 	
 	var res = false
 	for n in neighbours:
-		if n == from: continue
-		res = res or n.check_root(self)
+		if n in visited: continue
+		visited.append(self)
+		res = res or n.check_root(visited)
 	return res
 
 func neighbour_die(who: Tile) -> void:
@@ -48,7 +49,7 @@ func neighbour_die(who: Tile) -> void:
 
 func recheck_root() -> void:
 	if !check_root():
-		_death()
+		Global.death_queue.append(self)
 
 func build() -> void:
 	if Global.money < data.cost:
@@ -79,16 +80,14 @@ func check_prebuild() -> bool:
 func _on_hit() -> void:
 	health -= 1
 	if health <= 0:
-		_death()
+		Global.death_queue.append(self)
 
-func _death() -> void:
+func death() -> void:
 	for n in neighbours:
-		if !n: continue
 		n.neighbour_die(self)
 	queue_free()
 	
 	for n in neighbours:
-		if !n: continue
 		n.recheck_root()
 
 func _on_mouse_entered() -> void:
