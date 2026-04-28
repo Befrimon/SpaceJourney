@@ -14,6 +14,7 @@ size = Vector2(7, 7)
 radius = 2.0
 
 [node name="Tile" type="StaticBody2D" unique_id=222142140 node_paths=PackedStringArray("sprite", "hitbox", "allow_area", "deny_area")]
+input_pickable = true
 script = ExtResource("1_3dk36")
 sprite = NodePath("Sprite2D")
 hitbox = NodePath("Hitbox")
@@ -51,3 +52,5 @@ shape = SubResource("CircleShape2D_ywnoi")
 shape = SubResource("CircleShape2D_ywnoi")
 
 [connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

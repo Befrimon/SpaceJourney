@@ -11,6 +11,7 @@ signal hit
 @export var allow_area: Area2D = null
 @export var deny_area: Area2D = null
 
+var mouse_focus: bool = false
 var placed: bool = false
 var health: int = 3
 var neighbours: Array[Tile] = []
@@ -26,21 +27,37 @@ func _process(_delta: float) -> void:
 		sprite.modulate = Color(1, 0, 0)
 	elif !placed:
 		sprite.modulate = Color(0, 1, 0)
-		
+	
+	if placed and mouse_focus and Input.is_action_just_pressed("remove"):
+		_death()
+	
 
-func check_root() -> bool:
+func check_root(from: Tile = null) -> bool:
 	if is_root:
 		return true
 	
 	var res = false
 	for n in neighbours:
-		res = res or n.check_root()
+		if n == from: continue
+		res = res or n.check_root(self)
 	return res
+
+func neighbour_die(who: Tile) -> void:
+	neighbours.remove_at(neighbours.find(who))
+
+func recheck_root() -> void:
+	if !check_root():
+		_death()
 
 func build() -> void:
 	placed = true
 	hitbox.disabled = false
 	sprite.modulate = Color(1, 1, 1)
+	
+	for n in allow_area.get_overlapping_bodies():
+		if !n is Tile: continue
+		neighbours.append(n)
+		n.neighbours.append(self)
 
 func check_prebuild() -> bool:
 	return allow_area.get_overlapping_bodies().size() > 0 and deny_area.get_overlapping_bodies().size() == 0
@@ -51,4 +68,15 @@ func _on_hit() -> void:
 		_death()
 
 func _death() -> void:
-	pass
+	for n in neighbours:
+		n.neighbour_die(self)
+	queue_free()
+	
+	for n in neighbours:
+		n.recheck_root()
+
+func _on_mouse_entered() -> void:
+	mouse_focus = true
+
+func _on_mouse_exited() -> void:
+	mouse_focus = false
