@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*uid://bqhaoi7ojjnes"
 Constants="*uid://3t88ngxwkqq5"
+Global="*uid://cywqv5ffgifq7"
 
 [display]
 

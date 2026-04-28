@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ch5h6nblis4pi" path="res://scripts/tile.gd" id="1_3dk36"]
 [ext_resource type="Texture2D" uid="uid://dwtfj4pokbxc" path="res://assets/Style E/tilemap_packed.png" id="2_ywnoi"]
-[ext_resource type="PackedScene" uid="uid://b67pb5cwowwcb" path="res://scenes/cannon.tscn" id="3_jy7pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy7pm"]
 atlas = ExtResource("2_ywnoi")
@@ -14,13 +13,14 @@ size = Vector2(7, 7)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ywnoi"]
 radius = 2.0
 
-[node name="Tile" type="StaticBody2D" unique_id=222142140 node_paths=PackedStringArray("sprite", "hitbox", "allow_area", "deny_area")]
+[node name="Tile" type="StaticBody2D" unique_id=222142140 node_paths=PackedStringArray("sprite", "hitbox", "allow_area", "deny_area", "money_timer")]
 input_pickable = true
 script = ExtResource("1_3dk36")
 sprite = NodePath("Sprite2D")
 hitbox = NodePath("Hitbox")
 allow_area = NodePath("Connect")
 deny_area = NodePath("Deny")
+money_timer = NodePath("MoneyIncome")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=487431968]
 texture = SubResource("AtlasTexture_jy7pm")
@@ -52,9 +52,9 @@ shape = SubResource("CircleShape2D_ywnoi")
 [node name="CollisionShape_01" type="CollisionShape2D" parent="Deny" unique_id=1982689038]
 shape = SubResource("CircleShape2D_ywnoi")
 
-[node name="Cannon" parent="." unique_id=881392516 instance=ExtResource("3_jy7pm")]
-is_player = true
+[node name="MoneyIncome" type="Timer" parent="." unique_id=921130354]
 
 [connection signal="hit" from="." to="." method="_on_hit"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="MoneyIncome" to="." method="_on_money_income_timeout"]

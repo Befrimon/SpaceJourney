@@ -6,10 +6,11 @@ signal hit
 @export var is_root: bool = false
 @export var data: MyTileData = Constants.TILE_DATA.block
 
-@export var sprite: Sprite2D = null  
+@export var sprite: Sprite2D = null
 @export var hitbox: CollisionShape2D = null
 @export var allow_area: Area2D = null
 @export var deny_area: Area2D = null
+@export var money_timer: Timer = null
 
 var mouse_focus: bool = false
 var placed: bool = false
@@ -50,9 +51,22 @@ func recheck_root() -> void:
 		_death()
 
 func build() -> void:
+	if Global.money < data.cost:
+		queue_free()
+		return
+	
+	Global.money -= data.cost
 	placed = true
 	hitbox.disabled = false
 	sprite.modulate = Color(1, 1, 1)
+	
+	if data.has_cannon:
+		var cannon = preload("uid://b67pb5cwowwcb").instantiate()
+		cannon.is_player = true
+		add_child(cannon)
+	
+	if data.money_income_delay > 0:
+		money_timer.start(data.money_income_delay)
 	
 	for n in allow_area.get_overlapping_bodies():
 		if !n is Tile: continue
@@ -80,3 +94,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	mouse_focus = false
+
+func _on_money_income_timeout() -> void:
+	Global.money += 1

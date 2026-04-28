@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://derk7cjfwo8tk" path="res://scripts/ship.gd" id="1_2gnfn"]
 [ext_resource type="PackedScene" uid="uid://y4jq8vyyx4h2" path="res://scenes/tile.tscn" id="2_4tobq"]
 [ext_resource type="Resource" uid="uid://byi8oguqngvbh" path="res://resources/tile/root.tres" id="3_4tobq"]
+[ext_resource type="PackedScene" uid="uid://b7nc8s2238kml" path="res://scenes/game_ui.tscn" id="4_tfsc7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tfsc7"]
+allow_unpress = true
 
 [node name="Ship" type="CharacterBody2D" unique_id=65887]
 scale = Vector2(2, 2)
@@ -13,3 +17,9 @@ is_root = true
 data = ExtResource("3_4tobq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1739690124]
+
+[node name="GameUI" parent="CanvasLayer" unique_id=853261546 node_paths=PackedStringArray("ship_parent") instance=ExtResource("4_tfsc7")]
+ship_parent = NodePath("../..")
+shop_button_group = SubResource("ButtonGroup_tfsc7")
+
+[connection signal="shop_select" from="." to="." method="_on_shop_select"]

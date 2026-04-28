@@ -21,10 +21,8 @@ func _ready() -> void:
 	
 	match (parent):
 		Owners.PLAYER:
-			collision_layer = 2
 			collision_mask = 2
 		Owners.ENEMY:
-			collision_layer = 1
 			collision_mask = 1
 
 func _physics_process(delta: float) -> void:

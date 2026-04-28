@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="MyTileData" format=3 uid="uid://c58nsa68doo2u"]
 
-[ext_resource type="Script" uid="uid://nox1a0ixv83j" path="res://scripts/resources/tile_data.gd" id="1_pojkr"]
-[ext_resource type="Texture2D" uid="uid://dwtfj4pokbxc" path="res://assets/Style E/tilemap_packed.png" id="2_c4jau"]
+[ext_resource type="Script" uid="uid://nox1a0ixv83j" path="res://scripts/resources/tile_data.gd" id="1_qxnln"]
+[ext_resource type="Texture2D" uid="uid://dwtfj4pokbxc" path="res://assets/Style E/tilemap_packed.png" id="2_abvub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_id3vc"]
-atlas = ExtResource("2_c4jau")
+atlas = ExtResource("2_abvub")
 region = Rect2(32, 16, 8, 8)
 
 [resource]
-script = ExtResource("1_pojkr")
+script = ExtResource("1_qxnln")
 name = "Block"
+cost = 1
 texture = SubResource("AtlasTexture_id3vc")
 metadata/_custom_type_script = "uid://nox1a0ixv83j"
