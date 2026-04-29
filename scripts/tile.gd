@@ -112,5 +112,5 @@ func _on_mouse_exited() -> void:
 func _on_money_income_timeout() -> void:
 	if is_player:
 		Global.money += 1
-	else:
+	elif is_instance_valid(boss_parent):
 		boss_parent.world_link.direct_spawn(global_position + boss_parent.data.enemy_spawn * 8)
