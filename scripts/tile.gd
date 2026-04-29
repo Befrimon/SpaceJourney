@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name Tile
 
-signal hit
+signal hit(dmg: int)
 
 @export var is_root: bool = false
 @export var data: MyTileData = Constants.TILE_DATA.block
@@ -64,9 +64,10 @@ func build() -> void:
 	hitbox.disabled = false
 	sprite.modulate = Color(1, 1, 1)
 	
-	if data.has_cannon:
-		var cannon = preload("uid://b67pb5cwowwcb").instantiate()
+	if data.cannon:
+		var cannon: Cannon = preload("uid://b67pb5cwowwcb").instantiate()
 		cannon.is_player = true
+		cannon.data = data.cannon
 		add_child(cannon)
 	
 	if data.money_income_delay > 0:
@@ -80,8 +81,8 @@ func build() -> void:
 func check_prebuild() -> bool:
 	return allow_area.get_overlapping_bodies().size() > 0 and deny_area.get_overlapping_bodies().size() == 0
 
-func _on_hit() -> void:
-	health -= 1
+func _on_hit(dmg: int) -> void:
+	health -= dmg
 	if health <= 0:
 		Global.death_queue.append(self)
 

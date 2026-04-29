@@ -13,6 +13,7 @@ enum Owners {
 var speed: float = 1e4
 var life_time: float = 1.0
 var direction: float = 0.0
+var damage: int = 0
 
 var parent := Owners.UNKNOWN
 
@@ -37,10 +38,10 @@ func _physics_process(delta: float) -> void:
 		var body = get_slide_collision(i).get_collider()
 		
 		if parent == Owners.ENEMY and body is Tile:
-			body.emit_signal("hit")
+			body.hit.emit(damage)
 			queue_free()
 		elif parent == Owners.PLAYER and body is Enemy:
-			body.emit_signal("hit")
+			body.hit.emit(damage)
 			queue_free()
 
 func _death() -> void:

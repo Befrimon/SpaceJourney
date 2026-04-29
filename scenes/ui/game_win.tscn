@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://chvp8hknjuv1c"]
+
+[ext_resource type="AudioStream" uid="uid://c068twul3c7ix" path="res://assets/sound/Success.wav" id="1_8emvv"]
+[ext_resource type="Script" uid="uid://bidy7oxh6ntob" path="res://scripts/ui/game_win.gd" id="1_loxwf"]
+[ext_resource type="Theme" uid="uid://db4wfalphgqbk" path="res://resources/ui/default_theme.tres" id="1_wmioy"]
+
+[node name="GameWin" type="Control" unique_id=1878826547]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wmioy")
+script = ExtResource("1_loxwf")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1373389396]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.50980395)
+
+[node name="Label" type="Label" parent="." unique_id=645852609]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -11.5
+offset_right = 44.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 42
+text = "WIN_TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=64137085]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 50.0
+offset_right = 48.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1975662382]
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=1223828944]
+layout_mode = 2
+text = "MAIN_MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1254579807]
+stream = ExtResource("1_8emvv")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_continue"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_main_menu"]

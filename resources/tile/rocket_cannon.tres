@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MyTileData" format=3 uid="uid://05e2fn1etd3j"]
+
+[ext_resource type="Resource" uid="uid://bkuwy1gtgr6ej" path="res://resources/cannon/rocket.tres" id="1_mivhg"]
+[ext_resource type="Script" uid="uid://nox1a0ixv83j" path="res://scripts/resources/tile_data.gd" id="2_1058e"]
+[ext_resource type="Texture2D" uid="uid://dm38qccghoy63" path="res://assets/image/ship/tilemap_packed.png" id="3_8on12"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id3vc"]
+atlas = ExtResource("3_8on12")
+region = Rect2(24, 16, 8, 8)
+
+[resource]
+script = ExtResource("2_1058e")
+name = "rocket"
+cost = 7
+texture = SubResource("AtlasTexture_id3vc")
+cannon = ExtResource("1_mivhg")
+metadata/_custom_type_script = "uid://nox1a0ixv83j"

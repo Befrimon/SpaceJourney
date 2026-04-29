@@ -7,8 +7,9 @@ extends Control
 @export var shop_button_group: ButtonGroup = null
 @export_subgroup("Buttons")
 @export var block_btn: UIButton = null
-@export var cannon_btn: UIButton = null
 @export var generator_btn: UIButton = null
+@export var cannon_btn: UIButton = null
+@export var rocket_btn: UIButton = null
 
 @export_group("Info")
 @export var money_label: Label = null
@@ -47,13 +48,17 @@ func _process(_delta: float) -> void:
 		TranslationServer.translate("BLOCK"), 
 		int(Constants.TILE_DATA.block.cost * pow(1.5, Global.tile_count.block))
 	]
+	generator_btn.text = "%s - %s G" % [
+		TranslationServer.translate("GENER"), 
+		int(Constants.TILE_DATA.generator.cost * pow(1.5, Global.tile_count.generator))
+	]
 	cannon_btn.text = "%s - %s G" % [
 		TranslationServer.translate("CANNON"), 
 		int(Constants.TILE_DATA.cannon.cost * pow(1.5, Global.tile_count.cannon))
 	]
-	generator_btn.text = "%s - %s G" % [
-		TranslationServer.translate("GENER"), 
-		int(Constants.TILE_DATA.generator.cost * pow(1.5, Global.tile_count.generator))
+	rocket_btn.text = "%s - %s G" % [
+		TranslationServer.translate("ROCKET"), 
+		int(Constants.TILE_DATA.rocket.cost * pow(1.5, Global.tile_count.rocket))
 	]
 
 func _select_shop_tile(button: BaseButton) -> void:

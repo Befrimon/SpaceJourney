@@ -31,8 +31,9 @@ func _shoot() -> void:
 	instance.direction = rotation
 	instance.speed = data.speed
 	instance.life_time = data.life_time
-	instance.position = global_position
+	instance.damage = data.damage
 	instance.sprite.animation = data.animation
+	instance.position = global_position
 	
 	if is_player:
 		instance.parent = Bullet.Owners.PLAYER

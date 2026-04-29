@@ -34,6 +34,11 @@ func _process(_delta: float) -> void:
 		var game_over = preload("uid://dn5c64myggs71").instantiate()
 		canvas.add_child(game_over)
 		get_tree().paused = true
+	
+	if Global.wave == 11 and !Global.wave_infinity:
+		var game_win = preload("uid://chvp8hknjuv1c").instantiate()
+		canvas.add_child(game_win)
+		get_tree().paused = true
 
 func _physics_process(delta: float) -> void:
 	var x_dir = Input.get_axis("left", "right")

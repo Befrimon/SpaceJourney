@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-signal hit
+signal hit(dmg: int)
 
 @export var data: EnemyData = null
 @export var sprite: AnimatedSprite2D = null
@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	
 	on_screen = notifier.is_on_screen()
 
-func _on_hit() -> void:
-	health -= 1
+func _on_hit(dmg: int) -> void:
+	health -= dmg
 	if health <= 0:
 		queue_free()

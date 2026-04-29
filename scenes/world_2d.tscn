@@ -8,15 +8,25 @@
 [ext_resource type="AudioStream" uid="uid://du1v05kkkvfbn" path="res://assets/sound/loop/A Worthy Challenge (LOOP)-1.wav" id="6_rxbej"]
 [ext_resource type="AudioStream" uid="uid://bhul8gtemhbym" path="res://assets/sound/loop/A Worthy Challenge (LOOP).wav" id="7_p8ltl"]
 [ext_resource type="AudioStream" uid="uid://b82lg8l1tf1qe" path="res://assets/sound/loop/Hurry! (LOOP).wav" id="8_aua73"]
+[ext_resource type="AudioStream" uid="uid://dq5a86law7gsl" path="res://assets/sound/loop/The Graveyard (LOOP).wav" id="8_hd844"]
 [ext_resource type="AudioStream" uid="uid://da2v2vpt6n7uq" path="res://assets/sound/loop/In Dire Need (LOOP).wav" id="9_dojpf"]
+[ext_resource type="AudioStream" uid="uid://v0bg2ukpt8af" path="res://assets/sound/loop/The Laboratory (LOOP).wav" id="9_fjtas"]
+[ext_resource type="AudioStream" uid="uid://0kvl5bj43alq" path="res://assets/sound/loop/The Operation (LOOP).wav" id="10_3bwnv"]
 [ext_resource type="AudioStream" uid="uid://3n5lfx52ypfs" path="res://assets/sound/loop/Jump and Shoot Man (LOOP).wav" id="10_j30hf"]
+[ext_resource type="AudioStream" uid="uid://b54400ebhour" path="res://assets/sound/loop/The Threat (LOOP).wav" id="11_3tk4o"]
 [ext_resource type="AudioStream" uid="uid://c2dab8334n4va" path="res://assets/sound/loop/Meeting The Call (INTRO).wav" id="11_o6f6o"]
 [ext_resource type="AudioStream" uid="uid://c4nuevwt5mljd" path="res://assets/sound/loop/Meeting The Call (LOOP).wav" id="12_5shll"]
+[ext_resource type="AudioStream" uid="uid://2mhbmpofwt1i" path="res://assets/sound/loop/Vast Surroundings (LOOP).wav" id="12_se4ow"]
+[ext_resource type="AudioStream" uid="uid://kjjfmmky2bwi" path="res://assets/sound/loop/We Have New Info (LOOP).wav" id="13_2mgl6"]
+[ext_resource type="AudioStream" uid="uid://bxhblo2u012ha" path="res://assets/sound/loop/You Beast! (LOOP).wav" id="14_1dymk"]
+[ext_resource type="AudioStream" uid="uid://cuufv515e4qxr" path="res://assets/sound/loop/Old Friends (LOOP).wav" id="20_w2nhc"]
+[ext_resource type="AudioStream" uid="uid://cc4w663bgku6n" path="res://assets/sound/loop/Prove It (LOOP).wav" id="21_gaiu2"]
+[ext_resource type="AudioStream" uid="uid://627e3va0newv" path="res://assets/sound/loop/Shopping For The Future (LOOP).wav" id="22_rlbgw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rxbej"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rurfk"]
-streams_count = 7
+streams_count = 17
 stream_0/stream = ExtResource("6_rxbej")
 stream_1/stream = ExtResource("7_p8ltl")
 stream_2/stream = ExtResource("8_aua73")
@@ -24,6 +34,16 @@ stream_3/stream = ExtResource("9_dojpf")
 stream_4/stream = ExtResource("10_j30hf")
 stream_5/stream = ExtResource("11_o6f6o")
 stream_6/stream = ExtResource("12_5shll")
+stream_7/stream = ExtResource("20_w2nhc")
+stream_8/stream = ExtResource("21_gaiu2")
+stream_9/stream = ExtResource("22_rlbgw")
+stream_10/stream = ExtResource("8_hd844")
+stream_11/stream = ExtResource("9_fjtas")
+stream_12/stream = ExtResource("10_3bwnv")
+stream_13/stream = ExtResource("11_3tk4o")
+stream_14/stream = ExtResource("12_se4ow")
+stream_15/stream = ExtResource("13_2mgl6")
+stream_16/stream = ExtResource("14_1dymk")
 
 [node name="World2D" type="Node2D" unique_id=399623472 node_paths=PackedStringArray("pointer_container", "enemy_container", "wave_timer", "bg_player")]
 script = ExtResource("1_vydw8")
@@ -103,4 +123,9 @@ stream = SubResource("AudioStreamRandomizer_rurfk")
 autoplay = true
 bus = &"Music"
 
+[node name="Timer" type="Timer" parent="AudioStreamPlayer" unique_id=434550315]
+wait_time = 60.0
+autostart = true
+
 [connection signal="timeout" from="WaveTimer" to="." method="_spawn_enemies"]
+[connection signal="timeout" from="AudioStreamPlayer/Timer" to="AudioStreamPlayer" method="play"]

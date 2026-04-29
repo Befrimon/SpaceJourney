@@ -4,8 +4,10 @@ RUSSIAN,Russian,Русский
 MENU,Menu,Меню
 SETTINGS,Settings,Настройки
 START,Start,Начать
-GO_TITLE,SKILL ISSUE,ХОРОШАЯ ПОПЫТКА
+GO_TITLE,SKILL ISSUE,СТАРАЙСЯ ЛУЧШЕ
+WIN_TITLE,YOU DID IT,ТЫ СДЕЛАЛ ЭТО
 MAIN_MENU,Main Menu,Главное Меню
+CONTINUE,Infinity Mode,Бесконечный режим
 RETRY,Retry Now,Еще попытка
 EXIT,Exit,Выход
 BACK,Back,Назад
@@ -30,5 +32,6 @@ ENEMY_LEFT,Enemies Left: ,Врагов:
 NEXT_WAVE,Next Wave: ,До волны: 
 BLOCK,Block,Корпус
 CANNON,Cannon,Пущка
+ROCKET,Rocket,Ракетница
 GENER,Generator,Майнер
 WAVE,Wave: ,Волна: 

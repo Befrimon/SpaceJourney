@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn5c64myggs71"]
 
 [ext_resource type="Script" uid="uid://btdtvnhljhjr7" path="res://scripts/ui/game_over.gd" id="1_60xr3"]
+[ext_resource type="Theme" uid="uid://db4wfalphgqbk" path="res://resources/ui/default_theme.tres" id="1_x6o8e"]
 [ext_resource type="AudioStream" uid="uid://ceruk1a25xjgi" path="res://assets/sound/Failure.wav" id="2_fu4wh"]
 
 [node name="GameOver" type="Control" unique_id=996232864]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_x6o8e")
 script = ExtResource("1_60xr3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=876143753]
@@ -35,6 +37,7 @@ offset_right = 44.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 42
 text = "GO_TITLE"
 horizontal_alignment = 1

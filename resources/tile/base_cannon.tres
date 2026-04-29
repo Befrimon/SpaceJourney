@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MyTileData" format=3 uid="uid://cchrl52u3sjhq"]
+
+[ext_resource type="Resource" uid="uid://dbapvwg7qkpo6" path="res://resources/cannon/defaut.tres" id="1_3jtgd"]
+[ext_resource type="Script" uid="uid://nox1a0ixv83j" path="res://scripts/resources/tile_data.gd" id="1_l4kt7"]
+[ext_resource type="Texture2D" uid="uid://dm38qccghoy63" path="res://assets/image/ship/tilemap_packed.png" id="2_3jtgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id3vc"]
+atlas = ExtResource("2_3jtgd")
+region = Rect2(24, 16, 8, 8)
+
+[resource]
+script = ExtResource("1_l4kt7")
+name = "cannon"
+cost = 3
+texture = SubResource("AtlasTexture_id3vc")
+cannon = ExtResource("1_3jtgd")
+metadata/_custom_type_script = "uid://nox1a0ixv83j"

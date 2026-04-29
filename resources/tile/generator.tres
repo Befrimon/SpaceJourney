@@ -10,7 +10,7 @@ region = Rect2(24, 32, 8, 8)
 [resource]
 script = ExtResource("1_3kbhl")
 name = "generator"
-cost = 5
+cost = 3
 texture = SubResource("AtlasTexture_t1hqp")
 money_income_delay = 5.0
 metadata/_custom_type_script = "uid://nox1a0ixv83j"
