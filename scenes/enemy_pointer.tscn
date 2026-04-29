@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cxw3qq3stdqfc"]
+
+[ext_resource type="Script" uid="uid://bm8imh4ilvqyr" path="res://scripts/enemy_pointer.gd" id="1_3ytyx"]
+[ext_resource type="Texture2D" uid="uid://b7xliwvupvhyt" path="res://assets/image/huge_assetpack.png" id="1_80lld"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ytyx"]
+atlas = ExtResource("1_80lld")
+region = Rect2(17, 169, 7, 7)
+
+[node name="EnemyPointer" type="RayCast2D" unique_id=2082880521 node_paths=PackedStringArray("sprite")]
+target_position = Vector2(16, 0)
+script = ExtResource("1_3ytyx")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726046597]
+position = Vector2(70, 0)
+texture = SubResource("AtlasTexture_3ytyx")

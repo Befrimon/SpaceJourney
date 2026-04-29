@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://egeld37ilpra"
-path="res://.godot/imported/RU_HOVERED.png-c54ea076a3b1a5cc0a1dae9ec517a324.ctex"
+uid="uid://bhnmvi3h2cdar"
+path="res://.godot/imported/Windows_Button_Pressed_Outlined.png-c2c6248ae81ea2121a31c715d0329175.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/ui/RU_HOVERED.png"
-dest_files=["res://.godot/imported/RU_HOVERED.png-c54ea076a3b1a5cc0a1dae9ec517a324.ctex"]
+source_file="res://assets/image/ui/Windows_Button_Pressed_Outlined.png"
+dest_files=["res://.godot/imported/Windows_Button_Pressed_Outlined.png-c2c6248ae81ea2121a31c715d0329175.ctex"]
 
 [params]
 

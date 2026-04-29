@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dko5kjtjrqtwi"
-path="res://.godot/imported/US_HOV.png-7514fa3d6fdf90777df919f5cab88389.ctex"
+uid="uid://dkj1ov4ekydj4"
+path="res://.godot/imported/Windows_SideBar_Underside.png-878a59a776299ca53095e23666ab9dc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/image/ui/US_HOV.png"
-dest_files=["res://.godot/imported/US_HOV.png-7514fa3d6fdf90777df919f5cab88389.ctex"]
+source_file="res://assets/image/ui/Windows_SideBar_Underside.png"
+dest_files=["res://.godot/imported/Windows_SideBar_Underside.png-878a59a776299ca53095e23666ab9dc6.ctex"]
 
 [params]
 

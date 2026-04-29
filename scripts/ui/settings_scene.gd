@@ -15,21 +15,15 @@ var active_tab: StringName = TAB_AUDIO
 	TAB_CONTROLS: $MarginContainer/VBoxContainer/Content/MarginContainer/ControlSettings,
 }
 
-func set_tab(tab: StringName) -> void:
-	active_tab = tab
-	_update_ui()
-
-
-func back() -> void:
-	SceneManager.change_scene(Constants.SCENES.main_menu)
-
-
 func _ready() -> void:
 	buttons[TAB_AUDIO].pressed.connect(_on_audio_tab_pressed)
 	buttons[TAB_CONTROLS].pressed.connect(_on_controls_tab_pressed)
 
 	set_tab(TAB_AUDIO)
 
+func set_tab(tab: StringName) -> void:
+	active_tab = tab
+	_update_ui()
 
 func _update_ui() -> void:
 	for key: StringName in buttons.keys():
@@ -37,10 +31,8 @@ func _update_ui() -> void:
 		buttons[key].button_pressed = is_active
 		pages[key].visible = is_active
 
-
 func _on_audio_tab_pressed() -> void:
 	set_tab(TAB_AUDIO)
-
 
 func _on_controls_tab_pressed() -> void:
 	set_tab(TAB_CONTROLS)

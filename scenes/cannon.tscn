@@ -1,19 +1,10 @@
 [gd_scene format=3 uid="uid://b67pb5cwowwcb"]
 
-[ext_resource type="Texture2D" uid="uid://b7xliwvupvhyt" path="res://assets/image/huge_assetpack.png" id="1_xuqfy"]
 [ext_resource type="Script" uid="uid://cd80n42cej6nq" path="res://scripts/cannon.gd" id="2_pxhkx"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxhkx"]
-atlas = ExtResource("1_xuqfy")
-region = Rect2(96, 120, 8, 8)
 
 [node name="Cannon" type="Node2D" unique_id=881392516 node_paths=PackedStringArray("timer")]
 script = ExtResource("2_pxhkx")
 timer = NodePath("Timer")
-
-[node name="Cannon" type="Sprite2D" parent="." unique_id=1158439815]
-rotation = 1.5707964
-texture = SubResource("AtlasTexture_pxhkx")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1237345804]
 target_position = Vector2(0, -4)

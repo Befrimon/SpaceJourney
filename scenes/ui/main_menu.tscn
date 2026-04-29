@@ -1,26 +1,34 @@
 [gd_scene format=3 uid="uid://l1lcblaw643f"]
 
 [ext_resource type="Texture2D" uid="uid://bciuj5hbo82so" path="res://assets/image/ui/RU.png" id="1_1g8jr"]
+[ext_resource type="Theme" uid="uid://db4wfalphgqbk" path="res://resources/ui/default_theme.tres" id="1_8g5eo"]
 [ext_resource type="Script" uid="uid://bmayh0njwouer" path="res://scripts/ui/main_menu.gd" id="1_btxxm"]
-[ext_resource type="Texture2D" uid="uid://egeld37ilpra" path="res://assets/image/ui/RU_HOVERED.png" id="2_m1kxf"]
 [ext_resource type="Resource" uid="uid://b8nxmoh84kac" path="res://resources/ui/default_ui_sounds.tres" id="3_wb0q5"]
 [ext_resource type="Texture2D" uid="uid://c4ra17p3ew7v7" path="res://assets/image/ui/US.png" id="3_x2yvf"]
-[ext_resource type="Texture2D" uid="uid://dko5kjtjrqtwi" path="res://assets/image/ui/US_HOV.png" id="4_m1kxf"]
-[ext_resource type="Script" uid="uid://bwjq3svgnfeun" path="res://scripts/ui/ui_texture_button.gd" id="7_q85j6"]
+[ext_resource type="Texture2D" uid="uid://bam6g1alk5vb4" path="res://assets/image/ui/Windows_Progress_Fill.png" id="4_wb0q5"]
+[ext_resource type="Texture2D" uid="uid://bhtd542jxcsfw" path="res://assets/image/ui/Windows_Icons.png" id="5_q85j6"]
 [ext_resource type="Script" uid="uid://dti3vmjmu654" path="res://scripts/ui/ui_button.gd" id="7_y1h5l"]
 [ext_resource type="Texture2D" uid="uid://dokso3ch0hjpp" path="res://assets/image/ui/menu_bg.png" id="9_q85j6"]
+[ext_resource type="PackedScene" uid="uid://de7jrpxcmw233" path="res://scenes/ui/settings_scene.tscn" id="10_8g5eo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85j6"]
-bg_color = Color(0.2509804, 0.2509804, 0.2509804, 0.5882353)
+[sub_resource type="AtlasTexture" id="AtlasTexture_q85j6"]
+atlas = ExtResource("5_q85j6")
+region = Rect2(32, 0, 16, 16)
 
-[node name="MainMenu" type="Control" unique_id=1754400263]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g5eo"]
+atlas = ExtResource("5_q85j6")
+region = Rect2(48, 0, 16, 16)
+
+[node name="MainMenu" type="Control" unique_id=1754400263 node_paths=PackedStringArray("settings")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8g5eo")
 script = ExtResource("1_btxxm")
+settings = NodePath("SettingsScene")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=744885461]
 layout_mode = 1
@@ -42,9 +50,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.47058824)
+color = Color(0, 0, 0, 0.5882353)
 
-[node name="Panel" type="Panel" parent="." unique_id=700049836]
+[node name="Panel" type="Panel" parent="." unique_id=1766976943]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,68 +65,156 @@ offset_right = 100.0
 offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_q85j6")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1806895972]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=835865285]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=2135589541]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
 
-[node name="MenuColumn" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1911263030]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2" unique_id=1294643923]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+texture = ExtResource("4_wb0q5")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer2/TextureRect" unique_id=428564735]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer" unique_id=51907640]
+layout_mode = 2
+alignment = 2
+
+[node name="HelpBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer/HBoxContainer" unique_id=2097900799]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+script = ExtResource("7_y1h5l")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer/HBoxContainer/HelpBtn" unique_id=229976791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_q85j6")
+
+[node name="ExitBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer/HBoxContainer" unique_id=491299434]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+script = ExtResource("7_y1h5l")
+settings = ExtResource("3_wb0q5")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer/HBoxContainer/ExitBtn" unique_id=551053643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_8g5eo")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=1806895972]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="MenuColumn" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer" unique_id=1911263030]
 layout_mode = 2
 theme_override_constants/separation = 13
 
-[node name="StartBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=502151497]
+[node name="StartBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/MenuColumn" unique_id=502151497]
 layout_mode = 2
 text = "START"
 script = ExtResource("7_y1h5l")
 settings = ExtResource("3_wb0q5")
 metadata/_custom_type_script = "uid://dti3vmjmu654"
 
-[node name="SettingsBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=504738217]
+[node name="SettingsBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/MenuColumn" unique_id=504738217]
 layout_mode = 2
 text = "SETTINGS"
 script = ExtResource("7_y1h5l")
 settings = ExtResource("3_wb0q5")
 metadata/_custom_type_script = "uid://dti3vmjmu654"
 
-[node name="ExitBtn" type="Button" parent="Panel/MarginContainer/MenuColumn" unique_id=635861193]
+[node name="LanguageRow" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/MenuColumn" unique_id=842619594]
 layout_mode = 2
-text = "EXIT"
+size_flags_horizontal = 4
+
+[node name="RUBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow" unique_id=1030606851]
+custom_minimum_size = Vector2(22, 15)
+layout_mode = 2
 script = ExtResource("7_y1h5l")
 settings = ExtResource("3_wb0q5")
 metadata/_custom_type_script = "uid://dti3vmjmu654"
 
-[node name="LanguageRow" type="HBoxContainer" parent="Panel/MarginContainer/MenuColumn" unique_id=842619594]
-layout_mode = 2
-size_flags_horizontal = 4
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/RUBtn" unique_id=1777948986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
 
-[node name="RussianBtn" type="TextureButton" parent="Panel/MarginContainer/MenuColumn/LanguageRow" unique_id=942620969]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/RUBtn/MarginContainer" unique_id=760126142]
 layout_mode = 2
-texture_normal = ExtResource("1_1g8jr")
-texture_hover = ExtResource("2_m1kxf")
-script = ExtResource("7_q85j6")
+texture = ExtResource("1_1g8jr")
+
+[node name="ENBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow" unique_id=1410459160]
+custom_minimum_size = Vector2(22, 15)
+layout_mode = 2
+script = ExtResource("7_y1h5l")
 settings = ExtResource("3_wb0q5")
-metadata/_custom_type_script = "uid://bwjq3svgnfeun"
+metadata/_custom_type_script = "uid://dti3vmjmu654"
 
-[node name="AmericanBtn" type="TextureButton" parent="Panel/MarginContainer/MenuColumn/LanguageRow" unique_id=87602415]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/ENBtn" unique_id=1529270544]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/ENBtn/MarginContainer" unique_id=1279604959]
 layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("3_x2yvf")
-texture_hover = ExtResource("4_m1kxf")
-script = ExtResource("7_q85j6")
-settings = ExtResource("3_wb0q5")
-metadata/_custom_type_script = "uid://bwjq3svgnfeun"
+texture = ExtResource("3_x2yvf")
 
-[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/StartBtn" to="." method="start_game"]
-[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/SettingsBtn" to="." method="settings"]
-[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/ExitBtn" to="." method="exit_game"]
-[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/LanguageRow/RussianBtn" to="." method="_on_russian_btn_pressed"]
-[connection signal="pressed" from="Panel/MarginContainer/MenuColumn/LanguageRow/AmericanBtn" to="." method="_on_american_btn_pressed"]
+[node name="SettingsScene" parent="." unique_id=879470821 instance=ExtResource("10_8g5eo")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer2/TextureRect/MarginContainer/HBoxContainer/ExitBtn" to="." method="_exit_game"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/MenuColumn/StartBtn" to="." method="_start_game"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/MenuColumn/SettingsBtn" to="." method="_settings"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/RUBtn" to="." method="_on_russian_btn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/MenuColumn/LanguageRow/ENBtn" to="." method="_on_american_btn_pressed"]

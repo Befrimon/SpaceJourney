@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_baske")
 life_time = 2.0
-speed = 10000.0
+speed = 15000.0
 metadata/_custom_type_script = "uid://bxsh7b6gr2b0d"

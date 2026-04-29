@@ -12,6 +12,6 @@ func _ready() -> void:
 	
 	SceneManager.change_scene(Constants.SCENES.main_menu)
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("close"):
-		get_tree().quit()
+#func _process(_delta: float) -> void:
+#	if Input.is_action_just_pressed("close"):
+#		get_tree().quit()

@@ -1,0 +1,35 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ce6qmvsfm4o67"]
+
+[ext_resource type="Texture2D" uid="uid://btdifbtonknip" path="res://assets/image/s4m_ur4i_huge-assetpack-enemies-animations.png" id="1_2cpri"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp21p"]
+atlas = ExtResource("1_2cpri")
+region = Rect2(0, 158, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0xol"]
+atlas = ExtResource("1_2cpri")
+region = Rect2(30, 158, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qardr"]
+atlas = ExtResource("1_2cpri")
+region = Rect2(60, 158, 30, 30)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp21p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0xol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qardr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0xol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]

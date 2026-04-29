@@ -52,11 +52,14 @@ func recheck_root() -> void:
 		Global.death_queue.append(self)
 
 func build() -> void:
-	if Global.money < data.cost:
+	var real_cost = int(data.cost * pow(1.5, Global.tile_count[data.name]))
+	
+	if Global.money < real_cost:
 		queue_free()
 		return
 	
-	Global.money -= data.cost
+	Global.money -= real_cost
+	Global.tile_count[data.name] += 1
 	placed = true
 	hitbox.disabled = false
 	sprite.modulate = Color(1, 1, 1)
@@ -85,6 +88,7 @@ func _on_hit() -> void:
 func death() -> void:
 	for n in neighbours:
 		n.neighbour_die(self)
+	Global.tile_count[data.name] -= 1
 	queue_free()
 	
 	for n in neighbours:

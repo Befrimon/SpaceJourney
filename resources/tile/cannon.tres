@@ -5,11 +5,11 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_id3vc"]
 atlas = ExtResource("2_an3s7")
-region = Rect2(32, 16, 8, 8)
+region = Rect2(24, 16, 8, 8)
 
 [resource]
 script = ExtResource("1_by7fr")
-name = "Cannon"
+name = "cannon"
 cost = 3
 texture = SubResource("AtlasTexture_id3vc")
 has_cannon = true

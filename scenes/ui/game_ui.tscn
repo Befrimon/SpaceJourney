@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://b7nc8s2238kml"]
 
 [ext_resource type="Script" uid="uid://cg1t85gc807fo" path="res://scripts/ui/game_ui.gd" id="1_ru5ln"]
+[ext_resource type="Theme" uid="uid://db4wfalphgqbk" path="res://resources/ui/default_theme.tres" id="1_v1bdg"]
 [ext_resource type="ButtonGroup" uid="uid://c66we7j5pl7u3" path="res://resources/ui/shop_group.tres" id="2_v1bdg"]
 [ext_resource type="Resource" uid="uid://c58nsa68doo2u" path="res://resources/tile/block.tres" id="3_qrkc0"]
 [ext_resource type="Resource" uid="uid://cchrl52u3sjhq" path="res://resources/tile/cannon.tres" id="4_yvtb5"]
+[ext_resource type="Script" uid="uid://dti3vmjmu654" path="res://scripts/ui/ui_button.gd" id="5_fftnl"]
 [ext_resource type="Resource" uid="uid://bonxe5pryw2ao" path="res://resources/tile/generator.tres" id="5_k7elv"]
+[ext_resource type="Resource" uid="uid://b8nxmoh84kac" path="res://resources/ui/default_ui_sounds.tres" id="6_fftnl"]
+[ext_resource type="Texture2D" uid="uid://bam6g1alk5vb4" path="res://assets/image/ui/Windows_Progress_Fill.png" id="7_qrkc0"]
 
 [sub_resource type="Animation" id="Animation_ojb23"]
 length = 0.001
@@ -34,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(640, 30), Vector2(540, 30)]
+"values": [Vector2(640, 30), Vector2(486, 30)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rns2u"]
@@ -43,7 +47,44 @@ _data = {
 &"default": SubResource("Animation_yubou")
 }
 
-[node name="GameUI" type="Control" unique_id=853261546 node_paths=PackedStringArray("shop_animator", "money_label", "wave_title", "wave_label", "wave_value", "wave_count")]
+[sub_resource type="Animation" id="Animation_qrkc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -90)]
+}
+
+[sub_resource type="Animation" id="Animation_yvtb5"]
+resource_name = "default"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, -90), Vector2(4, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7elv"]
+_data = {
+&"RESET": SubResource("Animation_qrkc0"),
+&"default": SubResource("Animation_yvtb5")
+}
+
+[node name="GameUI" type="Control" unique_id=853261546 node_paths=PackedStringArray("shop_animator", "block_btn", "cannon_btn", "generator_btn", "money_label", "wave_title", "wave_label", "wave_value", "wave_count")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,14 +92,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_v1bdg")
 script = ExtResource("1_ru5ln")
 shop_animator = NodePath("Tiles/AnimationPlayer")
 shop_button_group = ExtResource("2_v1bdg")
-money_label = NodePath("Panel/MarginContainer/VBoxContainer/Money/Count")
-wave_title = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Title")
-wave_label = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Count")
-wave_value = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Value")
-wave_count = NodePath("Panel/MarginContainer/VBoxContainer/WaveCount/Count")
+block_btn = NodePath("Tiles/VBoxContainer/MarginContainer/VBoxContainer/BlockBtn")
+cannon_btn = NodePath("Tiles/VBoxContainer/MarginContainer/VBoxContainer/CannonBtn")
+generator_btn = NodePath("Tiles/VBoxContainer/MarginContainer/VBoxContainer/GeneratorBtn")
+money_label = NodePath("Stats/VBoxContainer/MarginContainer/VBoxContainer/Money/Count")
+wave_title = NodePath("Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData/Title")
+wave_label = NodePath("Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData/Count")
+wave_value = NodePath("Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData/Value")
+wave_count = NodePath("Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveCount/Count")
 
 [node name="Tiles" type="Panel" parent="." unique_id=1399751600]
 layout_mode = 1
@@ -67,7 +112,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 30.0
-offset_right = 100.0
+offset_right = 150.0
 offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -75,26 +120,50 @@ grow_vertical = 2
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Tiles" unique_id=270316796]
 libraries/ = SubResource("AnimationLibrary_rns2u")
 
-[node name="MarginContainer" type="MarginContainer" parent="Tiles" unique_id=1405594522]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tiles" unique_id=398355999]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Tiles/VBoxContainer" unique_id=1708746981]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Tiles/VBoxContainer/MarginContainer2" unique_id=551058226]
+layout_mode = 2
+texture = ExtResource("7_qrkc0")
+
+[node name="Label" type="Label" parent="Tiles/VBoxContainer/MarginContainer2/NinePatchRect" unique_id=1254725637]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "SHOP_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Tiles/VBoxContainer" unique_id=1405594522]
+layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Tiles/MarginContainer" unique_id=814573716]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tiles/VBoxContainer/MarginContainer" unique_id=814573716]
 layout_mode = 2
 
-[node name="BlockBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=1808515859]
+[node name="BlockBtn" type="Button" parent="Tiles/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1691680728]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 16
 toggle_mode = true
 button_pressed = true
 button_group = ExtResource("2_v1bdg")
@@ -102,93 +171,145 @@ shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "BLOCK"
 alignment = 0
+script = ExtResource("5_fftnl")
+settings = ExtResource("6_fftnl")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
 metadata/tile_data = ExtResource("3_qrkc0")
 
-[node name="CannonBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=410704515]
+[node name="CannonBtn" type="Button" parent="Tiles/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1431094188]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 16
 toggle_mode = true
 button_group = ExtResource("2_v1bdg")
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "CANNON"
 alignment = 0
+script = ExtResource("5_fftnl")
+settings = ExtResource("6_fftnl")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
 metadata/tile_data = ExtResource("4_yvtb5")
 
-[node name="GeneratorBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=1409704813]
+[node name="GeneratorBtn" type="Button" parent="Tiles/VBoxContainer/MarginContainer/VBoxContainer" unique_id=128664929]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 focus_mode = 0
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 16
 toggle_mode = true
 button_group = ExtResource("2_v1bdg")
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "GENER"
 alignment = 0
+script = ExtResource("5_fftnl")
+settings = ExtResource("6_fftnl")
+metadata/_custom_type_script = "uid://dti3vmjmu654"
 metadata/tile_data = ExtResource("5_k7elv")
 
-[node name="Panel" type="Panel" parent="." unique_id=1540961721]
+[node name="Stats" type="Panel" parent="." unique_id=1540961721]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 4.0
-offset_right = 164.0
-offset_bottom = 94.0
+offset_top = -90.0
+offset_right = 144.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=361598397]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stats" unique_id=1770028214]
+libraries/ = SubResource("AnimationLibrary_k7elv")
+autoplay = &"default"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats" unique_id=1131113840]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Stats/VBoxContainer" unique_id=1090476935]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Stats/VBoxContainer/MarginContainer2" unique_id=535173816]
+layout_mode = 2
+texture = ExtResource("7_qrkc0")
+
+[node name="Label" type="Label" parent="Stats/VBoxContainer/MarginContainer2/NinePatchRect" unique_id=475999346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STAT_TITLE"
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats/VBoxContainer" unique_id=361598397]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=639218853]
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/VBoxContainer/MarginContainer" unique_id=639218853]
 layout_mode = 2
 
-[node name="Money" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=398046492]
+[node name="Money" type="HBoxContainer" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer" unique_id=398046492]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=1482467261]
+[node name="Title" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/Money" unique_id=1482467261]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "MONEY"
 
-[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=248865405]
+[node name="Count" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/Money" unique_id=248865405]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "1000"
 
-[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=1920437597]
+[node name="Value" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/Money" unique_id=1920437597]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "G"
 
-[node name="WaveData" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=547447991]
+[node name="WaveData" type="HBoxContainer" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer" unique_id=547447991]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=1941678711]
+[node name="Title" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData" unique_id=1941678711]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "NEXT_WAVE"
 
-[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=297432172]
+[node name="Count" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData" unique_id=297432172]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "20"
 
-[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=1945091114]
+[node name="Value" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveData" unique_id=1945091114]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "s"
 
-[node name="WaveCount" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=681012652]
+[node name="WaveCount" type="HBoxContainer" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer" unique_id=681012652]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveCount" unique_id=448091870]
+[node name="Title" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveCount" unique_id=448091870]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "WAVE"
 
-[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveCount" unique_id=16947732]
+[node name="Count" type="Label" parent="Stats/VBoxContainer/MarginContainer/VBoxContainer/WaveCount" unique_id=16947732]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 text = "1"

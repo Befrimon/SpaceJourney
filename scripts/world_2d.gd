@@ -1,11 +1,12 @@
 extends Node2D
 
+@export var pointer_container: Node2D = null
 @export var enemy_container: Node2D = null
 @export var wave_timer: Timer = null
 @export var bg_player: AudioStreamPlayer = null
 
 func _ready() -> void:
-	Global.next_wave()
+	Global.reset_wave()
 	wave_timer.start(Global.wave_delay)
 	Global.wave_timer = wave_timer
 
@@ -18,15 +19,17 @@ func _process(_delta: float) -> void:
 		Global.next_wave()
 		wave_timer.start(Global.wave_delay)
 
+var _spawn_left: int = 0
 func _spawn_enemies() -> void:
 	Global.wave_active = true
-	for i in range(Global.enemy_count):
+	_spawn_left = Global.enemy_count
+	while _spawn_left > 0:
 		var iter = 0
 		while iter < 5 or !_try_spawn():
 			iter += 1
 
 func _try_spawn() -> bool:
-	var enemy = preload("uid://n5jf0bgbamc7").instantiate()
+	var enemy: Enemy = preload("uid://n5jf0bgbamc7").instantiate()
 	var enemy_position = Vector2(
 		randf_range(-400, 1400),
 		randf_range(-300, 225),
@@ -43,7 +46,18 @@ func _try_spawn() -> bool:
 		if body.collider.has_meta("player_area"):
 			return false
 	
+	if _spawn_left > 5 and randf() < (Global.wave - 3) / 10.0:
+		enemy.data = Constants.ENEMIES.elite_bat
+		_spawn_left -= 3
+	else:
+		enemy.data = Constants.ENEMIES.bat
+		_spawn_left -= 1
+	
 	enemy.position = enemy_position
 	enemy_container.add_child(enemy)
+	
+	var pointer = preload("uid://cxw3qq3stdqfc").instantiate()
+	pointer.target = enemy
+	pointer_container.add_child(pointer)
 	
 	return true

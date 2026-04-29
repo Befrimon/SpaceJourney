@@ -9,6 +9,6 @@ region = Rect2(32, 24, 8, 8)
 
 [resource]
 script = ExtResource("1_lmp2r")
-name = "Root"
+name = "root"
 texture = SubResource("AtlasTexture_weimw")
 metadata/_custom_type_script = "uid://nox1a0ixv83j"

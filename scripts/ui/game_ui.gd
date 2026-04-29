@@ -5,6 +5,10 @@ extends Control
 @export_group("Shop")
 @export var shop_animator: AnimationPlayer = null
 @export var shop_button_group: ButtonGroup = null
+@export_subgroup("Buttons")
+@export var block_btn: UIButton = null
+@export var cannon_btn: UIButton = null
+@export var generator_btn: UIButton = null
 
 @export_group("Info")
 @export var money_label: Label = null
@@ -31,7 +35,6 @@ func _process(_delta: float) -> void:
 		wave_label.text = "%d" % int(Global.wave_timer.time_left)
 		wave_value.text = "s"
 	
-	
 	if Input.is_action_just_pressed("switch_build"):
 		if !shop_opened:
 			shop_animator.play("default")
@@ -39,6 +42,19 @@ func _process(_delta: float) -> void:
 		else:
 			shop_animator.play_backwards()
 			shop_opened = false
+	
+	block_btn.text = "%s - %s G" % [
+		TranslationServer.translate("BLOCK"), 
+		int(Constants.TILE_DATA.block.cost * pow(1.5, Global.tile_count.block))
+	]
+	cannon_btn.text = "%s - %s G" % [
+		TranslationServer.translate("CANNON"), 
+		int(Constants.TILE_DATA.cannon.cost * pow(1.5, Global.tile_count.cannon))
+	]
+	generator_btn.text = "%s - %s G" % [
+		TranslationServer.translate("GENER"), 
+		int(Constants.TILE_DATA.generator.cost * pow(1.5, Global.tile_count.generator))
+	]
 
 func _select_shop_tile(button: BaseButton) -> void:
 	var data: MyTileData = button.get_meta("tile_data")

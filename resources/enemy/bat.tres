@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://cbfjfoudi7xaq"]
+
+[ext_resource type="SpriteFrames" uid="uid://e1et244oh126" path="res://resources/animtaion/enemies/bat.tres" id="1_cqxe0"]
+[ext_resource type="Script" uid="uid://1q18r3vxn03j" path="res://scripts/resources/enemy_data.gd" id="1_n0a6y"]
+[ext_resource type="Resource" uid="uid://di52tmqbwqqvs" path="res://resources/cannon/weak_enemy.tres" id="3_cqxe0"]
+
+[resource]
+script = ExtResource("1_n0a6y")
+name = "Base"
+animation = ExtResource("1_cqxe0")
+weapon = ExtResource("3_cqxe0")
+metadata/_custom_type_script = "uid://1q18r3vxn03j"

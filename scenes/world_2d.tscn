@@ -25,8 +25,9 @@ stream_4/stream = ExtResource("10_j30hf")
 stream_5/stream = ExtResource("11_o6f6o")
 stream_6/stream = ExtResource("12_5shll")
 
-[node name="World2D" type="Node2D" unique_id=399623472 node_paths=PackedStringArray("enemy_container", "wave_timer", "bg_player")]
+[node name="World2D" type="Node2D" unique_id=399623472 node_paths=PackedStringArray("pointer_container", "enemy_container", "wave_timer", "bg_player")]
 script = ExtResource("1_vydw8")
+pointer_container = NodePath("Ship/Pointers")
 enemy_container = NodePath("EnemyContainer")
 wave_timer = NodePath("WaveTimer")
 bg_player = NodePath("AudioStreamPlayer")
@@ -40,6 +41,8 @@ limit_top = -400
 limit_right = 1500
 limit_bottom = 335
 position_smoothing_enabled = true
+
+[node name="Pointers" type="Node2D" parent="Ship" unique_id=481468873]
 
 [node name="EnemyContainer" type="Node2D" parent="." unique_id=2018529026]
 

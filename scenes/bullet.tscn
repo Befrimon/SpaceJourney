@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://6iumdjknhmpy"]
 
 [ext_resource type="Script" uid="uid://dr0ttppxg84hy" path="res://scripts/bullet.gd" id="1_y25gk"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mkf8s"]
-load_path = "res://.godot/imported/s4m_ur4i_huge-assetpack-tilemap.png-d4d995822c52c948cb58cefc80c1ec15.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
-atlas = SubResource("CompressedTexture2D_mkf8s")
-region = Rect2(48, 192, 8, 8)
+[ext_resource type="SpriteFrames" uid="uid://drxgn5idkb5dg" path="res://resources/animtaion/bullets/player_default.tres" id="2_y25gk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkf8s"]
 radius = 4.0
@@ -20,8 +14,9 @@ script = ExtResource("1_y25gk")
 timer = NodePath("Timer")
 sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1647565034]
-texture = SubResource("AtlasTexture_y25gk")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=96016720]
+sprite_frames = ExtResource("2_y25gk")
+frame_progress = 0.566352
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1357258566]
 shape = SubResource("CircleShape2D_mkf8s")

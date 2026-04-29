@@ -8,7 +8,7 @@ enum Owners {
 }
 
 @export var timer: Timer = null
-@export var sprite: Sprite2D = null
+@export var sprite: AnimatedSprite2D = null
 
 var speed: float = 1e4
 var life_time: float = 1.0
@@ -23,9 +23,11 @@ func _ready() -> void:
 	match (parent):
 		Owners.PLAYER:
 			collision_mask = 2
+			sprite.sprite_frames = Constants.BULLETS.player_default
 		Owners.ENEMY:
 			collision_mask = 1
-			sprite.modulate = Color(0.0, 1.0, 1.0, 1.0)
+			sprite.sprite_frames = Constants.BULLETS.enemy_default
+	sprite.play()
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(1, 0).rotated(direction) * speed * delta

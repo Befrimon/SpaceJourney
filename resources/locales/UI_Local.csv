@@ -4,15 +4,27 @@ RUSSIAN,Russian,Русский
 MENU,Menu,Меню
 SETTINGS,Settings,Настройки
 START,Start,Начать
+GO_TITLE,SKILL ISSUE,ХОРОШАЯ ПОПЫТКА
+MAIN_MENU,Main Menu,Главное Меню
+RETRY,Retry Now,Еще попытка
 EXIT,Exit,Выход
 BACK,Back,Назад
 SOUND_SETTINGS,Sound,Звук
 FONT_SETTINGS,Font and accessibility,Шрифт и доступность
 CONTROL_SETTINGS,Controls,Управление
-JUMP,Jump,Прыжок
+MASTER_SOUND,Master,Общая
+MUSIC_SOUND,Music,Музыка
+SFX_SOUND,Sounds,Звуки
 LEFT,Left,Влево
 RIGHT,Right,Вправо
-BEBRA,!!!!,????
+UP,Up,Вверх
+DOWN,Down,Вниз
+SWITCH_BUILD,Switch Build Mode,Переключить режим постройки
+BUILD,Build Tile,Построить Тайл
+REMOVE,Remove Tile,Удалить Тайл
+PAUSE,Pause,Пауза
+STAT_TITLE, Your Stats, Статистика
+SHOP_TITLE, Build, Построить
 MONEY,Money: ,Золото: 
 ENEMY_LEFT,Enemies Left: ,Врагов: 
 NEXT_WAVE,Next Wave: ,До волны: 

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CannonData" format=3 uid="uid://di52tmqbwqqvs"]
+
+[ext_resource type="Script" uid="uid://bxsh7b6gr2b0d" path="res://scripts/resources/cannon_data.gd" id="1_asjyy"]
+
+[resource]
+script = ExtResource("1_asjyy")
+delay = 1.0
+life_time = 1.5
+speed = 10000.0
+metadata/_custom_type_script = "uid://bxsh7b6gr2b0d"

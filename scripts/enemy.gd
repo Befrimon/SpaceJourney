@@ -3,13 +3,25 @@ class_name Enemy
 
 signal hit
 
-@export var speed = 1e3
+@export var data: EnemyData = null
+@export var sprite: AnimatedSprite2D = null
+@export var cannon: Cannon = null
+@export var notifier: VisibleOnScreenNotifier2D = null
 
-var health: int = 3
+var health: int = 0
+var on_screen: bool = false
+
+func _ready() -> void:
+	health = data.max_health
+	sprite.sprite_frames = data.animation
+	sprite.play("default")
+	cannon.set_data(data.weapon)
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(0, 1).direction_to(Global.player_position - global_position) * speed * delta
+	velocity = Vector2(0, 1).direction_to(Global.player_position - global_position) * data.speed * delta
 	move_and_slide()
+	
+	on_screen = notifier.is_on_screen()
 
 func _on_hit() -> void:
 	health -= 1

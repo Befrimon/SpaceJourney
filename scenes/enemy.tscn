@@ -1,67 +1,29 @@
 [gd_scene format=3 uid="uid://n5jf0bgbamc7"]
 
 [ext_resource type="Script" uid="uid://dupy7nowutlkq" path="res://scripts/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://btdifbtonknip" path="res://assets/image/s4m_ur4i_huge-assetpack-enemies-animations.png" id="2_4ra3w"]
+[ext_resource type="SpriteFrames" uid="uid://e1et244oh126" path="res://resources/animtaion/enemies/bat.tres" id="2_4ra3w"]
 [ext_resource type="PackedScene" uid="uid://b67pb5cwowwcb" path="res://scenes/cannon.tscn" id="3_4ra3w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7p1mj"]
-radius = 6.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5uy6h"]
-atlas = ExtResource("2_4ra3w")
-region = Rect2(0, 783, 30, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
-atlas = ExtResource("2_4ra3w")
-region = Rect2(30, 783, 30, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
-atlas = ExtResource("2_4ra3w")
-region = Rect2(60, 783, 30, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
-atlas = ExtResource("2_4ra3w")
-region = Rect2(90, 783, 30, 29)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xwavj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5uy6h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4w8v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwavj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nenq2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xwavj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4w8v")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[node name="Enemy" type="CharacterBody2D" unique_id=753393108]
+[node name="Enemy" type="CharacterBody2D" unique_id=753393108 node_paths=PackedStringArray("sprite", "cannon", "notifier")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_md0e3")
+sprite = NodePath("AnimatedSprite2D")
+cannon = NodePath("Cannon")
+notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1741427581]
-shape = SubResource("CircleShape2D_7p1mj")
+shape = SubResource("CircleShape2D_4ra3w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1937738463]
-sprite_frames = SubResource("SpriteFrames_xwavj")
+sprite_frames = ExtResource("2_4ra3w")
 autoplay = "default"
-frame_progress = 0.9943487
+frame_progress = 0.27377048
 
 [node name="Cannon" parent="." unique_id=881392516 instance=ExtResource("3_4ra3w")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1983200890]
 
 [connection signal="hit" from="." to="." method="_on_hit"]

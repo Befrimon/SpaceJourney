@@ -9,8 +9,21 @@ const SCENES: Dictionary[StringName, String] = {
 const TILE_DATA: Dictionary[StringName, MyTileData] = {
 	"root": preload("uid://byi8oguqngvbh"),
 	"block": preload("uid://c58nsa68doo2u"),
+	"cannon": preload("uid://cchrl52u3sjhq"),
+	"generator": preload("uid://bonxe5pryw2ao"),
 }
 
 const CANNONS: Dictionary[StringName, CannonData] = {
 	"default": preload("uid://dbapvwg7qkpo6"),
+	"weak_enemy": preload("uid://di52tmqbwqqvs"),
+}
+
+const BULLETS: Dictionary[StringName, SpriteFrames] = {
+	"player_default": preload("uid://drxgn5idkb5dg"),
+	"enemy_default": preload("uid://da8l00tsi5la4"),
+}
+
+const ENEMIES: Dictionary[StringName, EnemyData] = {
+	"bat": preload("uid://cbfjfoudi7xaq"),
+	"elite_bat": preload("uid://y4apaclney6w"),
 }

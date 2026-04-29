@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn5c64myggs71"]
 
 [ext_resource type="Script" uid="uid://btdtvnhljhjr7" path="res://scripts/ui/game_over.gd" id="1_60xr3"]
+[ext_resource type="AudioStream" uid="uid://ceruk1a25xjgi" path="res://assets/sound/Failure.wav" id="2_fu4wh"]
 
 [node name="GameOver" type="Control" unique_id=996232864]
 process_mode = 3
@@ -35,7 +36,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 42
-text = "SKILL ISSUE"
+text = "GO_TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -55,11 +56,15 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=508716547]
 layout_mode = 2
-text = "Retry Now"
+text = "RETRY"
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=1032116432]
 layout_mode = 2
-text = "Main Menu"
+text = "MAIN_MENU"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1373575534]
+stream = ExtResource("2_fu4wh")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_restart"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_main_menu"]

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Cannon
 
 @export var is_player: bool = false
 @export var data: CannonData = Constants.CANNONS.default
@@ -16,6 +17,10 @@ func _process(_delta: float) -> void:
 	else:
 		look_at(Global.player_position)
 
+func set_data(new_data: CannonData) -> void:
+	data = new_data
+	timer.wait_time = data.delay
+
 func pause_shoot() -> void:
 	enabled = false
 func resume_shoot() -> void:
@@ -27,6 +32,7 @@ func _shoot() -> void:
 	instance.speed = data.speed
 	instance.life_time = data.life_time
 	instance.position = global_position
+	instance.sprite.animation = data.animation
 	
 	if is_player:
 		instance.parent = Bullet.Owners.PLAYER
