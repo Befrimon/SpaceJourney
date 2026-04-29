@@ -27,10 +27,10 @@ var wave_infinity: bool = false
 var wave_speed: float = 1.0
 
 func reset_wave() -> void:
-	money = 50000
+	money = 5
 	
-	wave = 10
-	wave_speed = 1.45
+	wave = 1
+	wave_speed = 1.0
 	wave_active = false
 	wave_infinity = false
 	enemy_count = randi_range(int((wave + 2) * 1.5), int((wave + 2) * 2.5))

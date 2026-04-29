@@ -1,4 +1,5 @@
 extends Node2D
+class_name World
 
 @export var pointer_container: Node2D = null
 @export var enemy_container: Node2D = null
@@ -22,11 +23,24 @@ func _process(_delta: float) -> void:
 var _spawn_left: int = 0
 func _spawn_enemies() -> void:
 	Global.wave_active = true
+	if Global.wave == 10:
+		_spawn_boss()
+	
 	_spawn_left = Global.enemy_count
 	while _spawn_left > 0:
 		var iter = 0
 		while iter < 5 or !_try_spawn():
 			iter += 1
+
+func _spawn_boss() -> void:
+	var boss: Boss = preload("uid://ql2x5lxw7wn1").instantiate()
+	boss.data = Constants.BOSSES.first
+	boss.world_link = self
+	enemy_container.add_child(boss)
+	
+	var pointer = preload("uid://cxw3qq3stdqfc").instantiate()
+	pointer.boss_target = boss
+	pointer_container.add_child(pointer)
 
 func _try_spawn() -> bool:
 	var enemy: Enemy = preload("uid://n5jf0bgbamc7").instantiate()
@@ -61,3 +75,16 @@ func _try_spawn() -> bool:
 	pointer_container.add_child(pointer)
 	
 	return true
+
+func direct_spawn(pos: Vector2) -> void:
+	var enemy: Enemy = preload("uid://n5jf0bgbamc7").instantiate()
+	enemy.position = pos
+	if randf() < (Global.wave - 3) / 10.0:
+		enemy.data = Constants.ENEMIES.elite_bat
+	else:
+		enemy.data = Constants.ENEMIES.bat
+	enemy_container.add_child(enemy)
+	
+	var pointer = preload("uid://cxw3qq3stdqfc").instantiate()
+	pointer.target = enemy
+	pointer_container.add_child(pointer)

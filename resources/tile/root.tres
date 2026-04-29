@@ -11,4 +11,5 @@ region = Rect2(32, 24, 8, 8)
 script = ExtResource("1_lmp2r")
 name = "root"
 texture = SubResource("AtlasTexture_weimw")
+money_income_delay = 30.0
 metadata/_custom_type_script = "uid://nox1a0ixv83j"

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ql2x5lxw7wn1"]
+
+[ext_resource type="Script" uid="uid://q4ab6g1cgf5w" path="res://scripts/boss.gd" id="1_jncid"]
+[ext_resource type="PackedScene" uid="uid://y4jq8vyyx4h2" path="res://scenes/tile.tscn" id="1_neq0i"]
+[ext_resource type="Resource" uid="uid://byi8oguqngvbh" path="res://resources/tile/root.tres" id="2_jncid"]
+[ext_resource type="Resource" uid="uid://dnenks13db4q" path="res://resources/enemy/first_boss.tres" id="2_qnbj4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qnbj4"]
+radius = 4.0
+
+[node name="Boss" type="CharacterBody2D" unique_id=666910182 node_paths=PackedStringArray("root", "notifier")]
+scale = Vector2(2, 2)
+script = ExtResource("1_jncid")
+data = ExtResource("2_qnbj4")
+root = NodePath("Root")
+notifier = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=200425118]
+shape = SubResource("CircleShape2D_qnbj4")
+
+[node name="Root" parent="." unique_id=222142140 instance=ExtResource("1_neq0i")]
+is_root = true
+is_player = false
+data = ExtResource("2_jncid")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=74903460]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=68660389]

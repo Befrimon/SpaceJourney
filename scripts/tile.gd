@@ -4,6 +4,7 @@ class_name Tile
 signal hit(dmg: int)
 
 @export var is_root: bool = false
+@export var is_player: bool = true
 @export var data: MyTileData = Constants.TILE_DATA.block
 
 @export var sprite: Sprite2D = null
@@ -11,6 +12,8 @@ signal hit(dmg: int)
 @export var allow_area: Area2D = null
 @export var deny_area: Area2D = null
 @export var money_timer: Timer = null
+
+var boss_parent: Boss = null
 
 var mouse_focus: bool = false
 var placed: bool = false
@@ -22,6 +25,9 @@ func _ready() -> void:
 	
 	if is_root:
 		build()
+	if !is_player:
+		collision_layer = 2
+		collision_mask = 2
 
 func _process(_delta: float) -> void:
 	if !placed and !check_prebuild():
@@ -54,12 +60,13 @@ func recheck_root() -> void:
 func build() -> void:
 	var real_cost = int(data.cost * pow(1.5, Global.tile_count[data.name]))
 	
-	if Global.money < real_cost:
+	if Global.money < real_cost and is_player:
 		queue_free()
 		return
 	
-	Global.money -= real_cost
-	Global.tile_count[data.name] += 1
+	if is_player:
+		Global.money -= real_cost
+		Global.tile_count[data.name] += 1
 	placed = true
 	hitbox.disabled = false
 	sprite.modulate = Color(1, 1, 1)
@@ -68,6 +75,7 @@ func build() -> void:
 		var cannon: Cannon = preload("uid://b67pb5cwowwcb").instantiate()
 		cannon.is_player = true
 		cannon.data = data.cannon
+		cannon.is_player = is_player
 		add_child(cannon)
 	
 	if data.money_income_delay > 0:
@@ -102,4 +110,7 @@ func _on_mouse_exited() -> void:
 	mouse_focus = false
 
 func _on_money_income_timeout() -> void:
-	Global.money += 1
+	if is_player:
+		Global.money += 1
+	else:
+		boss_parent.world_link.direct_spawn(global_position + boss_parent.data.enemy_spawn * 8)

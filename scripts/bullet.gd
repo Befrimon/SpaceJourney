@@ -37,10 +37,7 @@ func _physics_process(delta: float) -> void:
 	for i in range(get_slide_collision_count()):
 		var body = get_slide_collision(i).get_collider()
 		
-		if parent == Owners.ENEMY and body is Tile:
-			body.hit.emit(damage)
-			queue_free()
-		elif parent == Owners.PLAYER and body is Enemy:
+		if body is Tile or body is Enemy:
 			body.hit.emit(damage)
 			queue_free()
 

@@ -7,11 +7,21 @@
 atlas = ExtResource("1_80lld")
 region = Rect2(17, 169, 7, 7)
 
-[node name="EnemyPointer" type="RayCast2D" unique_id=2082880521 node_paths=PackedStringArray("sprite")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qpk1"]
+atlas = ExtResource("1_80lld")
+region = Rect2(112, 152, 8, 8)
+
+[node name="EnemyPointer" type="RayCast2D" unique_id=2082880521 node_paths=PackedStringArray("sprite", "boss_sprite")]
 target_position = Vector2(16, 0)
 script = ExtResource("1_3ytyx")
-sprite = NodePath("Sprite2D")
+sprite = NodePath("DefaultSprite")
+boss_sprite = NodePath("BossSprite")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726046597]
+[node name="DefaultSprite" type="Sprite2D" parent="." unique_id=726046597]
 position = Vector2(70, 0)
 texture = SubResource("AtlasTexture_3ytyx")
+
+[node name="BossSprite" type="Sprite2D" parent="." unique_id=1908013881]
+visible = false
+position = Vector2(70, 0)
+texture = SubResource("AtlasTexture_4qpk1")

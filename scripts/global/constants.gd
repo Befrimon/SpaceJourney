@@ -28,3 +28,7 @@ const ENEMIES: Dictionary[StringName, EnemyData] = {
 	"bat": preload("uid://cbfjfoudi7xaq"),
 	"elite_bat": preload("uid://y4apaclney6w"),
 }
+
+const BOSSES: Dictionary[StringName, BossData] = {
+	"first": preload("uid://dnenks13db4q"),
+}
