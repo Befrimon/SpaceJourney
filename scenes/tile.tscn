@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://y4jq8vyyx4h2"]
 
 [ext_resource type="Script" uid="uid://ch5h6nblis4pi" path="res://scripts/tile.gd" id="1_3dk36"]
-[ext_resource type="Texture2D" uid="uid://dwtfj4pokbxc" path="res://assets/Style E/tilemap_packed.png" id="2_ywnoi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dk36"]
+load_path = "res://.godot/imported/tilemap_packed.png-79e95408c3617e72f963ef480e67fb28.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jy7pm"]
-atlas = ExtResource("2_ywnoi")
+atlas = SubResource("CompressedTexture2D_3dk36")
 region = Rect2(32, 16, 8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uiyn6"]
@@ -59,6 +61,7 @@ shape = SubResource("CircleShape2D_ywnoi")
 [node name="BlockSpawn" type="Area2D" parent="." unique_id=1481749713]
 collision_layer = 4
 collision_mask = 4
+metadata/player_area = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockSpawn" unique_id=934424375]
 shape = SubResource("CircleShape2D_jy7pm")

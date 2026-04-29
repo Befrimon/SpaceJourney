@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b67pb5cwowwcb"]
 
-[ext_resource type="Texture2D" uid="uid://bqsc1abiebd4f" path="res://assets/s4m_ur4i_huge-assetpack(3)/s4m_ur4i_huge-assetpack-tilemap.png" id="1_xuqfy"]
+[ext_resource type="Texture2D" uid="uid://b7xliwvupvhyt" path="res://assets/image/huge_assetpack.png" id="1_xuqfy"]
 [ext_resource type="Script" uid="uid://cd80n42cej6nq" path="res://scripts/cannon.gd" id="2_pxhkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pxhkx"]

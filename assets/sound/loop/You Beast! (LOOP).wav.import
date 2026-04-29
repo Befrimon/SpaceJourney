@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bxhblo2u012ha"
+path="res://.godot/imported/You Beast! (LOOP).wav-a492e3c76ea319b85749b432d12f1f98.sample"
+
+[deps]
+
+source_file="res://assets/sound/loop/You Beast! (LOOP).wav"
+dest_files=["res://.godot/imported/You Beast! (LOOP).wav-a492e3c76ea319b85749b432d12f1f98.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

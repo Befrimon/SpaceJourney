@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://627e3va0newv"
+path="res://.godot/imported/Shopping For The Future (LOOP).wav-8c067f4c8b48a4b7301d6321e4d2c3a3.sample"
+
+[deps]
+
+source_file="res://assets/sound/loop/Shopping For The Future (LOOP).wav"
+dest_files=["res://.godot/imported/Shopping For The Future (LOOP).wav-8c067f4c8b48a4b7301d6321e4d2c3a3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

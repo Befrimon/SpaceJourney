@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dte6nh0ikaq4j" path="res://scripts/ui/settings_scene.gd" id="1_6hi4t"]
 [ext_resource type="Script" uid="uid://dti3vmjmu654" path="res://scripts/ui/ui_button.gd" id="1_pfmrl"]
+[ext_resource type="Texture2D" uid="uid://dokso3ch0hjpp" path="res://assets/image/ui/menu_bg.png" id="2_oow4c"]
 [ext_resource type="Resource" uid="uid://b8nxmoh84kac" path="res://resources/ui/default_ui_sounds.tres" id="3_u787k"]
 [ext_resource type="PackedScene" uid="uid://bl1rw531mg7u2" path="res://scenes/ui/audio_settings.tscn" id="5_oow4c"]
 [ext_resource type="PackedScene" uid="uid://c2oo687i7jom6" path="res://scenes/ui/control_settings.tscn" id="7_7jrx5"]
@@ -16,6 +17,28 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_6hi4t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=810882844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_top = -80.0
+offset_right = 88.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oow4c")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1033903232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.47058824)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1683692710]
 layout_mode = 1

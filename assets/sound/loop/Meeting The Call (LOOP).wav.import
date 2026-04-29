@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c4nuevwt5mljd"
+path="res://.godot/imported/Meeting The Call (LOOP).wav-e89db77f071e2ab4708b5b57f97b7c44.sample"
+
+[deps]
+
+source_file="res://assets/sound/loop/Meeting The Call (LOOP).wav"
+dest_files=["res://.godot/imported/Meeting The Call (LOOP).wav-e89db77f071e2ab4708b5b57f97b7c44.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

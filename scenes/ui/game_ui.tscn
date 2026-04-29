@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://b7nc8s2238kml"]
+
+[ext_resource type="Script" uid="uid://cg1t85gc807fo" path="res://scripts/ui/game_ui.gd" id="1_ru5ln"]
+[ext_resource type="ButtonGroup" uid="uid://c66we7j5pl7u3" path="res://resources/ui/shop_group.tres" id="2_v1bdg"]
+[ext_resource type="Resource" uid="uid://c58nsa68doo2u" path="res://resources/tile/block.tres" id="3_qrkc0"]
+[ext_resource type="Resource" uid="uid://cchrl52u3sjhq" path="res://resources/tile/cannon.tres" id="4_yvtb5"]
+[ext_resource type="Resource" uid="uid://bonxe5pryw2ao" path="res://resources/tile/generator.tres" id="5_k7elv"]
+
+[sub_resource type="Animation" id="Animation_ojb23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 30)]
+}
+
+[sub_resource type="Animation" id="Animation_yubou"]
+resource_name = "default"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(640, 30), Vector2(540, 30)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rns2u"]
+_data = {
+&"RESET": SubResource("Animation_ojb23"),
+&"default": SubResource("Animation_yubou")
+}
+
+[node name="GameUI" type="Control" unique_id=853261546 node_paths=PackedStringArray("shop_animator", "money_label", "wave_title", "wave_label", "wave_value", "wave_count")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ru5ln")
+shop_animator = NodePath("Tiles/AnimationPlayer")
+shop_button_group = ExtResource("2_v1bdg")
+money_label = NodePath("Panel/MarginContainer/VBoxContainer/Money/Count")
+wave_title = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Title")
+wave_label = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Count")
+wave_value = NodePath("Panel/MarginContainer/VBoxContainer/WaveData/Value")
+wave_count = NodePath("Panel/MarginContainer/VBoxContainer/WaveCount/Count")
+
+[node name="Tiles" type="Panel" parent="." unique_id=1399751600]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tiles" unique_id=270316796]
+libraries/ = SubResource("AnimationLibrary_rns2u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Tiles" unique_id=1405594522]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tiles/MarginContainer" unique_id=814573716]
+layout_mode = 2
+
+[node name="BlockBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=1808515859]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("2_v1bdg")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "BLOCK"
+alignment = 0
+metadata/tile_data = ExtResource("3_qrkc0")
+
+[node name="CannonBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=410704515]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+toggle_mode = true
+button_group = ExtResource("2_v1bdg")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "CANNON"
+alignment = 0
+metadata/tile_data = ExtResource("4_yvtb5")
+
+[node name="GeneratorBtn" type="Button" parent="Tiles/MarginContainer/VBoxContainer" unique_id=1409704813]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 13
+toggle_mode = true
+button_group = ExtResource("2_v1bdg")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "GENER"
+alignment = 0
+metadata/tile_data = ExtResource("5_k7elv")
+
+[node name="Panel" type="Panel" parent="." unique_id=1540961721]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 164.0
+offset_bottom = 94.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=361598397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=639218853]
+layout_mode = 2
+
+[node name="Money" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=398046492]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=1482467261]
+layout_mode = 2
+text = "MONEY"
+
+[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=248865405]
+layout_mode = 2
+text = "1000"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/Money" unique_id=1920437597]
+layout_mode = 2
+text = "G"
+
+[node name="WaveData" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=547447991]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=1941678711]
+layout_mode = 2
+text = "NEXT_WAVE"
+
+[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=297432172]
+layout_mode = 2
+text = "20"
+
+[node name="Value" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveData" unique_id=1945091114]
+layout_mode = 2
+text = "s"
+
+[node name="WaveCount" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=681012652]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveCount" unique_id=448091870]
+layout_mode = 2
+text = "WAVE"
+
+[node name="Count" type="Label" parent="Panel/MarginContainer/VBoxContainer/WaveCount" unique_id=16947732]
+layout_mode = 2
+text = "1"

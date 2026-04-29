@@ -2,19 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://efljw0rusemx" path="res://scenes/ship.tscn" id="1_pneyj"]
 [ext_resource type="Script" uid="uid://cyynaa53iqa0k" path="res://scripts/world_2d.gd" id="1_vydw8"]
-[ext_resource type="Texture2D" uid="uid://bd48fnljvtocq" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-backgound.png" id="2_ieres"]
-[ext_resource type="Texture2D" uid="uid://btta404c7q21e" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-stars.png" id="3_6cuhj"]
-[ext_resource type="Texture2D" uid="uid://byp6krc41c6rp" path="res://assets/space_background_pack/space_background_pack/Assets/Old Version/layers/parallax-space-big-planet.png" id="4_vydw8"]
-[ext_resource type="AudioStream" uid="uid://du1v05kkkvfbn" path="res://assets/sounds/A Worthy Challenge (LOOP)-1.wav" id="6_rxbej"]
-[ext_resource type="AudioStream" uid="uid://bhul8gtemhbym" path="res://assets/sounds/A Worthy Challenge (LOOP).wav" id="7_p8ltl"]
-[ext_resource type="AudioStream" uid="uid://b82lg8l1tf1qe" path="res://assets/sounds/Hurry! (LOOP).wav" id="8_aua73"]
-[ext_resource type="AudioStream" uid="uid://da2v2vpt6n7uq" path="res://assets/sounds/In Dire Need (LOOP).wav" id="9_dojpf"]
-[ext_resource type="AudioStream" uid="uid://3n5lfx52ypfs" path="res://assets/sounds/Jump and Shoot Man (LOOP).wav" id="10_j30hf"]
-[ext_resource type="AudioStream" uid="uid://c2dab8334n4va" path="res://assets/sounds/Meeting The Call (INTRO).wav" id="11_o6f6o"]
-[ext_resource type="AudioStream" uid="uid://c4nuevwt5mljd" path="res://assets/sounds/Meeting The Call (LOOP).wav" id="12_5shll"]
+[ext_resource type="Texture2D" uid="uid://bd48fnljvtocq" path="res://assets/image/background/parallax-space-backgound.png" id="2_ieres"]
+[ext_resource type="Texture2D" uid="uid://btta404c7q21e" path="res://assets/image/background/parallax-space-stars.png" id="3_6cuhj"]
+[ext_resource type="Texture2D" uid="uid://byp6krc41c6rp" path="res://assets/image/background/parallax-space-big-planet.png" id="4_vydw8"]
+[ext_resource type="AudioStream" uid="uid://du1v05kkkvfbn" path="res://assets/sound/loop/A Worthy Challenge (LOOP)-1.wav" id="6_rxbej"]
+[ext_resource type="AudioStream" uid="uid://bhul8gtemhbym" path="res://assets/sound/loop/A Worthy Challenge (LOOP).wav" id="7_p8ltl"]
+[ext_resource type="AudioStream" uid="uid://b82lg8l1tf1qe" path="res://assets/sound/loop/Hurry! (LOOP).wav" id="8_aua73"]
+[ext_resource type="AudioStream" uid="uid://da2v2vpt6n7uq" path="res://assets/sound/loop/In Dire Need (LOOP).wav" id="9_dojpf"]
+[ext_resource type="AudioStream" uid="uid://3n5lfx52ypfs" path="res://assets/sound/loop/Jump and Shoot Man (LOOP).wav" id="10_j30hf"]
+[ext_resource type="AudioStream" uid="uid://c2dab8334n4va" path="res://assets/sound/loop/Meeting The Call (INTRO).wav" id="11_o6f6o"]
+[ext_resource type="AudioStream" uid="uid://c4nuevwt5mljd" path="res://assets/sound/loop/Meeting The Call (LOOP).wav" id="12_5shll"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rxbej"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rurfk"]
-playback_mode = 1
 streams_count = 7
 stream_0/stream = ExtResource("6_rxbej")
 stream_1/stream = ExtResource("7_p8ltl")
@@ -38,8 +39,32 @@ limit_left = -500
 limit_top = -400
 limit_right = 1500
 limit_bottom = 335
+position_smoothing_enabled = true
 
 [node name="EnemyContainer" type="Node2D" parent="." unique_id=2018529026]
+
+[node name="WorldBorders" type="StaticBody2D" parent="." unique_id=1911474067]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape_01" type="CollisionShape2D" parent="WorldBorders" unique_id=1463535748]
+position = Vector2(0, 335)
+shape = SubResource("WorldBoundaryShape2D_rxbej")
+
+[node name="CollisionShape_02" type="CollisionShape2D" parent="WorldBorders" unique_id=148776353]
+position = Vector2(-500, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_rxbej")
+
+[node name="CollisionShape_03" type="CollisionShape2D" parent="WorldBorders" unique_id=342262228]
+position = Vector2(0, -400)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_rxbej")
+
+[node name="CollisionShape_04" type="CollisionShape2D" parent="WorldBorders" unique_id=1243932989]
+position = Vector2(1500, 0)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_rxbej")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1619318759]
 

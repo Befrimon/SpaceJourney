@@ -28,8 +28,8 @@ func _spawn_enemies() -> void:
 func _try_spawn() -> bool:
 	var enemy = preload("uid://n5jf0bgbamc7").instantiate()
 	var enemy_position = Vector2(
-		randf_range(-100, 500),
-		randf_range(-100, 100),
+		randf_range(-400, 1400),
+		randf_range(-300, 225),
 	)
 	
 	var query = PhysicsPointQueryParameters2D.new()

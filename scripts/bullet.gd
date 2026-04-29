@@ -23,9 +23,9 @@ func _ready() -> void:
 	match (parent):
 		Owners.PLAYER:
 			collision_mask = 2
-			sprite.modulate = Color(0.0, 1.0, 1.0, 1.0)
 		Owners.ENEMY:
 			collision_mask = 1
+			sprite.modulate = Color(0.0, 1.0, 1.0, 1.0)
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(1, 0).rotated(direction) * speed * delta

@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="UIButtonSettings" format=3 uid="uid://b8nxmoh84kac"]
 
-[ext_resource type="AudioStream" uid="uid://wcgr2vdlstcg" path="res://assets/sound/ui/Audio/back_001.ogg" id="1_n6vrp"]
-[ext_resource type="AudioStream" uid="uid://bprpnaiselo5l" path="res://assets/sound/ui/Audio/back_002.ogg" id="2_cotki"]
-[ext_resource type="AudioStream" uid="uid://6yfygrjgmqu6" path="res://assets/sound/ui/Audio/back_003.ogg" id="3_lofyv"]
-[ext_resource type="AudioStream" uid="uid://cvspq5xiy75p5" path="res://assets/sound/ui/Audio/back_004.ogg" id="4_tgcya"]
-[ext_resource type="AudioStream" uid="uid://c3xq5rjc7mhq0" path="res://assets/sound/ui/Audio/bong_001.ogg" id="5_scxgx"]
+[ext_resource type="AudioStream" uid="uid://wcgr2vdlstcg" path="res://assets/sound/ui/back_001.ogg" id="1_n6vrp"]
+[ext_resource type="AudioStream" uid="uid://bprpnaiselo5l" path="res://assets/sound/ui/back_002.ogg" id="2_cotki"]
+[ext_resource type="AudioStream" uid="uid://6yfygrjgmqu6" path="res://assets/sound/ui/back_003.ogg" id="3_lofyv"]
+[ext_resource type="AudioStream" uid="uid://cvspq5xiy75p5" path="res://assets/sound/ui/back_004.ogg" id="4_tgcya"]
+[ext_resource type="AudioStream" uid="uid://c3xq5rjc7mhq0" path="res://assets/sound/ui/bong_001.ogg" id="5_scxgx"]
 [ext_resource type="Script" uid="uid://okfall1awfb5" path="res://scripts/ui/ui_button_settings.gd" id="6_swibt"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ekit"]
