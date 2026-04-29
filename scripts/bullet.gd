@@ -31,7 +31,7 @@ func _ready() -> void:
 	sprite.play()
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(1, 0).rotated(direction) * speed * delta
+	velocity = Vector2(1, 0).rotated(direction) * speed * delta * Global.wave_speed
 	move_and_slide()
 	
 	for i in range(get_slide_collision_count()):

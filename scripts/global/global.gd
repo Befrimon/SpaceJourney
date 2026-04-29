@@ -24,11 +24,13 @@ var wave_delay: int = 0
 var wave_active: bool = false
 var wave_timer: Timer = null
 var wave_infinity: bool = false
+var wave_speed: float = 1.0
 
 func reset_wave() -> void:
 	money = 50000
 	
-	wave = 1
+	wave = 10
+	wave_speed = 1.45
 	wave_active = false
 	wave_infinity = false
 	enemy_count = randi_range(int((wave + 2) * 1.5), int((wave + 2) * 2.5))
@@ -36,6 +38,7 @@ func reset_wave() -> void:
 
 func next_wave() -> void:
 	wave += 1
+	wave_speed += float(wave) / 100.0
 	enemy_count = randi_range(wave + 2, int((wave + 2) * 2.5))
 	wave_delay = max(3, int(3 / max(1, wave)))
 

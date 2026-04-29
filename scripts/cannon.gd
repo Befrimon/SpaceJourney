@@ -39,6 +39,7 @@ func _shoot() -> void:
 		instance.parent = Bullet.Owners.PLAYER
 	else:
 		instance.parent = Bullet.Owners.ENEMY
+		timer.wait_time = data.delay / Global.wave_speed
 	
 	if enabled:
 		add_child(instance)

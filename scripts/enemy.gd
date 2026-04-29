@@ -18,7 +18,7 @@ func _ready() -> void:
 	cannon.set_data(data.weapon)
 
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(0, 1).direction_to(Global.player_position - global_position) * data.speed * delta
+	velocity = Vector2(0, 1).direction_to(Global.player_position - global_position) * data.speed * delta * Global.wave_speed
 	move_and_slide()
 	
 	on_screen = notifier.is_on_screen()
