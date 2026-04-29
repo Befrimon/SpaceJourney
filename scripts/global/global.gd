@@ -29,6 +29,14 @@ var wave_speed: float = 1.0
 func reset_wave() -> void:
 	money = 5
 	
+	tile_count = {
+		"root": 0,
+		"block": 0,
+		"generator": 0,
+		"cannon": 0,
+		"rocket": 0,
+	}
+	
 	wave = 1
 	wave_speed = 1.0
 	wave_active = false
